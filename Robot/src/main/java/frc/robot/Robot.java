@@ -5,6 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;  
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class Robot extends TimedRobot {
 
@@ -12,6 +16,15 @@ public class Robot extends TimedRobot {
   private DriveTrainModule driveTrainModule = new DriveTrainModule();
   private Telemetry telemetry = new Telemetry();
   
+  WPI_TalonFX leftFront= new WPI_TalonFX(0); 
+  WPI_TalonFX leftBack = new WPI_TalonFX(0);
+  SpeedControllerGroup leftDrive = new SpeedControllerGroup(leftFront, leftBack);
+  WPI_TalonFX rightFront = new WPI_TalonFX(0);
+  WPI_TalonFX rightBack = new WPI_TalonFX(0);
+  SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFront, rightBack);
+  DifferentialDrive robotDrive = new DifferentialDrive(rightDrive, leftDrive);
+  private final Joystick joystick = new Joystick(0);
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -60,6 +73,10 @@ public class Robot extends TimedRobot {
 
       // Send telemetry.
       this.telemetry.send(driveControlsState, driveTrainState);
+
+      rightBack.setInverted(true);
+      rightFront.setInverted(true);
+      robotDrive.arcadeDrive(joystick.getRawAxis(0), joystick.getRawAxis(2));
   }
 
   /** This function is called once when the robot is disabled. */
