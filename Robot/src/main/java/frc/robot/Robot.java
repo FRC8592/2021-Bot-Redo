@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 
 
@@ -36,8 +36,13 @@ public class Robot extends TimedRobot {
 
   TalonFX leftFront= new TalonFX(0); 
   TalonFX leftBack = new TalonFX(0);
+  SpeedControllerGroup left_drive = new SpeedControllerGroup(leftFront, leftBack);
+
   TalonFX rightFront = new TalonFX(0);
   TalonFX rightBack = new TalonFX(0);
+  SpeedControllerGroup right_drive = new SpeedControllerGroup(rightFront, rightBack);
+
+  DifferentialDrive Robot_drive = new DifferentialDrive(right_drive, left_drive);
 
   private final Joystick joystick = new Joystick(0);
 
@@ -109,9 +114,10 @@ public class Robot extends TimedRobot {
     rightBack.setInverted(true);
     rightFront.setInverted(true);
 
-    
+    Robot_drive.arcadedrive(joystick.getRawAxis(0), joystick.getRawAxis(2));
 
-    if (joystick.getRawAxis(0) > 0) {
+
+    /*if (joystick.getRawAxis(0) > 0) {
 
       leftFront.set(ControlMode.PercentOutput, 1);
       leftBack.set(ControlMode.PercentOutput, 1);
@@ -132,7 +138,7 @@ public class Robot extends TimedRobot {
     else {}
 
 
-
+*/
   }
 
   /** This function is called once when the robot is disabled. */
