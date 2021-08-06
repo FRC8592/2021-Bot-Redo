@@ -23,7 +23,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;  
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 
 
@@ -34,15 +35,15 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  TalonFX leftFront= new TalonFX(0); 
-  TalonFX leftBack = new TalonFX(0);
-  SpeedControllerGroup left_drive = new SpeedControllerGroup(leftFront, leftBack);
+  WPI_TalonFX leftFront= new WPI_TalonFX(0); 
+  WPI_TalonFX leftBack = new WPI_TalonFX(0);
+  SpeedControllerGroup leftDrive = new SpeedControllerGroup(leftFront, leftBack);
 
-  TalonFX rightFront = new TalonFX(0);
-  TalonFX rightBack = new TalonFX(0);
-  SpeedControllerGroup right_drive = new SpeedControllerGroup(rightFront, rightBack);
+  WPI_TalonFX rightFront = new WPI_TalonFX(0);
+  WPI_TalonFX rightBack = new WPI_TalonFX(0);
+  SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFront, rightBack);
 
-  DifferentialDrive Robot_drive = new DifferentialDrive(right_drive, left_drive);
+  DifferentialDrive robotDrive = new DifferentialDrive(rightDrive, leftDrive);
 
   private final Joystick joystick = new Joystick(0);
 
@@ -114,7 +115,7 @@ public class Robot extends TimedRobot {
     rightBack.setInverted(true);
     rightFront.setInverted(true);
 
-    Robot_drive.arcadedrive(joystick.getRawAxis(0), joystick.getRawAxis(2));
+    robotDrive.arcadeDrive(joystick.getRawAxis(0), joystick.getRawAxis(2));
 
 
     /*if (joystick.getRawAxis(0) > 0) {
