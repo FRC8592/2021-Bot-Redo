@@ -4,6 +4,7 @@ import java.util.Map;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Telemetry {
+    
     public void send(TelemetrySource... sources) {
 
         // Loop through the sources, sending the data from each one
