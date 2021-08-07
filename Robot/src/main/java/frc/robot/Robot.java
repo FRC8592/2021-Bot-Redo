@@ -7,6 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
+
+  private DriveControlsModule driveControlsModule = new DriveControlsModule();
+  private DriveTrainModule driveTrainModule = new DriveTrainModule();
+  private TeleopController teleopController = new TeleopController();
+  private Telemetry telemetry = new Telemetry();
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -41,7 +46,20 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() { 
+  public void teleopPeriodic() {
+
+      // Read the initial state of each relevant module, i.e. get data from the sensors.
+      DriveControlsState driveControlsState = this.driveControlsModule.readState();
+      DriveTrainState driveTrainState = this.driveTrainModule.readState();
+
+      // Use the logic in the controller to determine what the new state should be for each module.
+      this.teleopController.control(driveControlsState, driveTrainState);
+
+      // Write the new state of each module, i.e. actually send signals to the hardware.
+      driveTrainState.write(driveTrainState);
+
+      // Send telemetry.
+      this.telemetry.send(driveControlsState, driveTrainState);
   }
 
   /** This function is called once when the robot is disabled. */

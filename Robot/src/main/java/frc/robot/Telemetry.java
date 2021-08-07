@@ -15,7 +15,7 @@ public class Telemetry {
     private void sendFromSource(TelemetrySource source) {
 
         // Get the data from the source and send each data item
-        Map<String, Double> data = source.toMap();
+        Map<String, Double> data = source.getTelemetryData();
         for(Map.Entry<String, Double> dataItem : data.entrySet()) {
             sendDataItem(dataItem);
         }
@@ -25,4 +25,7 @@ public class Telemetry {
         // Use SmartDashboard to send the data item
         SmartDashboard.putNumber(dataItem.getKey(), dataItem.getValue());
     }
+
+	public void send(DriveControlsState driveControlsState, DriveTrainState driveTrainState) {
+	}
 }
