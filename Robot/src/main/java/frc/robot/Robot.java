@@ -7,25 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
-
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.TimedRobot;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-import edu.wpi.first.wpilibj.GenericHID;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-
-
 
 public class Robot extends TimedRobot {
   
@@ -40,12 +24,6 @@ public class Robot extends TimedRobot {
   TalonFX rightBack = new TalonFX(0);
 
   private final Joystick joystick = new Joystick(0);
-
-
-  
-
-
-  // double speed = getRawAxis(0);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -130,8 +108,6 @@ public class Robot extends TimedRobot {
     }
 
     else {}
-
-
 
   }
 
