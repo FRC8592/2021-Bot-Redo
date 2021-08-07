@@ -12,7 +12,7 @@ public class DriveTrainModule {
 	 * will be used by the controller.
 	 */
 	public DriveTrainState readState() {
-		return null;
+		return new DriveTrainState();
 	}
 
 	/**
