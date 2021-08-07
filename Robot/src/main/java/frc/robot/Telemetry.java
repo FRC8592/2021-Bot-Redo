@@ -3,6 +3,10 @@ package frc.robot;
 import java.util.Map;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * Sends telemetry data to some display or collection device like
+ * SmartDashboard and/or a USB storage device that lives on the robot.
+ */
 public class Telemetry {
     
     public void send(TelemetrySource... sources) {
@@ -26,7 +30,4 @@ public class Telemetry {
         // Use SmartDashboard to send the data item
         SmartDashboard.putNumber(dataItem.getKey(), dataItem.getValue());
     }
-
-	public void send(DriveControlsState driveControlsState, DriveTrainState driveTrainState) {
-	}
 }

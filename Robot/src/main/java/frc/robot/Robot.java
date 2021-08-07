@@ -10,7 +10,6 @@ public class Robot extends TimedRobot {
 
   private DriveControlsModule driveControlsModule = new DriveControlsModule();
   private DriveTrainModule driveTrainModule = new DriveTrainModule();
-  private TeleopController teleopController = new TeleopController();
   private Telemetry telemetry = new Telemetry();
   
   /**
@@ -53,10 +52,11 @@ public class Robot extends TimedRobot {
       DriveTrainState driveTrainState = this.driveTrainModule.readState();
 
       // Use the logic in the controller to determine what the new state should be for each module.
-      this.teleopController.control(driveControlsState, driveTrainState);
+      TeleopController controller = new TeleopController(driveControlsState, driveTrainState);
+      controller.control();
 
       // Write the new state of each module, i.e. actually send signals to the hardware.
-      driveTrainState.write(driveTrainState);
+      driveTrainModule.writeState(driveTrainState);
 
       // Send telemetry.
       this.telemetry.send(driveControlsState, driveTrainState);
