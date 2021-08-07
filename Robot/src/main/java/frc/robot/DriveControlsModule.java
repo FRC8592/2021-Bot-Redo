@@ -28,7 +28,7 @@ public class DriveControlsModule {
 	public DriveControlsState readState() {
 		DriveControlsState state = new DriveControlsState();
 
-		state.setForwardBackward(joystick.getRawAxis(0));
+		state.setForwardBackward(joystick.getRawAxis(1)); // Y axis
 
 		return state;
 	}
