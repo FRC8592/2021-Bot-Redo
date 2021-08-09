@@ -14,14 +14,23 @@ import java.util.Map;
 public class DriveControlsState implements TelemetrySource {
 
     private double forwardBackward;
+    private double leftRight;
     
     public double getForwardBackward() {
         return this.forwardBackward;
     }
 
-	public void setForwardBackward(double forwardBackward) {
-        this.forwardBackward = forwardBackward;
-	}
+	public void setForwardBackward(double forwardBackwardInput) {
+        this.forwardBackward = forwardBackwardInput;
+    }
+    
+    public double getLeftRight(){
+        return this.leftRight;
+    }
+
+    public void setLeftRight(double leftRightInput){
+        this.leftRight = leftRightInput;
+    }
 
     /**
      * Store convert all data represented by this class into a HashMap so that the Telemetry
@@ -36,6 +45,7 @@ public class DriveControlsState implements TelemetrySource {
 
         // Add all of the data represented by this class to the Map
         data.put("forwardBackward", getForwardBackward());
+        data.put("leftRight", getLeftRight()); 
         
         return data;
     }

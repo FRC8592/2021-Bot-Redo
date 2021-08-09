@@ -29,6 +29,7 @@ public class DriveControlsModule {
 		DriveControlsState state = new DriveControlsState();
 
 		state.setForwardBackward(joystick.getRawAxis(1)); // Y axis
+		state.setLeftRight(joystick.getRawAxis(0)); //idk what the x axis of the joystick is but i think its 0. -Zolton
 
 		return state;
 	}
