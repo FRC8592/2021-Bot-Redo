@@ -22,6 +22,12 @@ public class TeleopController {
      */
     public void control() {
         // Control the robot by reading some state values, applying some logic to them, and setting other state values.
+
+        // Set the desired speed of the robot based on the forwardBackward input from the controls
+        double desiredSpeed = driveControlsState.getForwardBackward();
+        driveTrainState.setDesiredSpeed(desiredSpeed);
+
+        // TODO: Set the desired rotation of the robot based on the leftRight input from the controls
     }
     
 }
