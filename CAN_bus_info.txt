@@ -20,9 +20,9 @@ Turret and ball handling
 +----------+--------------+--------+-------------------------+
 | TalonSRX | turretRotate | 12     | Turrent rotation        |
 +----------+--------------+--------+-------------------------+
-| TalonSRX | ballTrigger  | 13     | Feed ball to launcher   |
+| TalonSRX | ballTrigger  | 11     | Feed ball to launcher   |
 +----------+--------------+--------+-------------------------+
-| TalonSRX | ballProcess  | 11     | Belt to push balls back |
+| TalonSRX | ballProcess  | 13     | Belt to push balls back |
 +----------+--------------+--------+-------------------------+
 | TalonSRX | intakeSpin   | 16     | Green roller intake     |
 +----------+--------------+--------+-------------------------+
