@@ -15,11 +15,6 @@ public class DriveTrainState implements TelemetrySource {
     private double m_desiredRotation = 0;
     private double m_desiredSpeed = 0;
 
-    @Override
-    public Map<String, Double> getTelemetryData() {
-        return new HashMap<String, Double>();
-    }
-
     public double getDesiredRotation() {
         return m_desiredRotation;
     }
@@ -34,5 +29,16 @@ public class DriveTrainState implements TelemetrySource {
 
     public void setDesiredSpeed(double desiredSpeed) {
         m_desiredSpeed = desiredSpeed;
+    }
+
+    @Override
+    public Map<String, Double> getTelemetryData() {
+        Map<String, Double> data = new HashMap<String, Double>();
+
+        // Add all of the data represented by this class to the Map
+        data.put("getDesiredRotation", getDesiredRotation());
+        data.put("getDesiredSpeed", getDesiredSpeed()); 
+
+        return data;
     }
 }
