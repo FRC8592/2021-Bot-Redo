@@ -27,7 +27,8 @@ public class TeleopController {
         double desiredSpeed = driveControlsState.getForwardBackward();
         driveTrainState.setDesiredSpeed(desiredSpeed);
 
-        // TODO: Set the desired rotation of the robot based on the leftRight input from the controls
+        double desiredRotation = driveControlsState.getLeftRight();
+        driveTrainState.setDesiredRotation(desiredRotation);
     }
     
 }
