@@ -12,11 +12,10 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrainModule {
 
-	// TODO: replace these with the correct CAN bus numbers.
-  WPI_TalonFX leftFront= new WPI_TalonFX(0); 
-  WPI_TalonFX leftBack = new WPI_TalonFX(1);
-  WPI_TalonFX rightFront= new WPI_TalonFX(2); 
-	WPI_TalonFX rightBack = new WPI_TalonFX(3);
+  WPI_TalonFX leftFront= new WPI_TalonFX(1);
+  WPI_TalonFX leftBack = new WPI_TalonFX(3);
+  WPI_TalonFX rightFront= new WPI_TalonFX(4);
+  WPI_TalonFX rightBack = new WPI_TalonFX(2);
 
   SpeedControllerGroup leftDrive = new SpeedControllerGroup(leftFront, leftBack);
   SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFront, rightBack);
