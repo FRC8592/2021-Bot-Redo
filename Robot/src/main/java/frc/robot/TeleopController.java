@@ -24,7 +24,8 @@ public class TeleopController {
         // Control the robot by reading some state values, applying some logic to them, and setting other state values.
 
         // Set the desired speed of the robot based on the forwardBackward input from the controls
-        double desiredSpeed = driveControlsState.getForwardBackward();
+        double controlPosition = driveControlsState.getForwardBackward();
+        double desiredSpeed = Math.pow(controlPosition, 2); // Square the input, so the controls are more forgiving. Half forward is .25 throttle. Full forward is still 1.0 throttle.
         driveTrainState.setDesiredSpeed(desiredSpeed);
 
         double desiredRotation = driveControlsState.getLeftRight();
