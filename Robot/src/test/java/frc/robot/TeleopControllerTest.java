@@ -56,6 +56,6 @@ public class TeleopControllerTest {
     teleopController.control();
 
     // Then it should set the desired speed to -1
-    assertThat(driveTrainState.getDesiredSpeed(), equalTo(-1));
+    assertThat(driveTrainState.getDesiredSpeed(), equalTo(-1.0));
   }
 }
