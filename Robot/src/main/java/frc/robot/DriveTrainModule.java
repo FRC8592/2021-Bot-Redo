@@ -21,6 +21,14 @@ public class DriveTrainModule {
   SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFront, rightBack);
   DifferentialDrive robotDrive = new DifferentialDrive(rightDrive, leftDrive);
 
+  public void init(){
+	  final double RAMPUP = 0.5;
+	  leftFront.configOpenloopRamp(RAMPUP);
+	  leftBack.configOpenloopRamp(RAMPUP);
+	  rightFront.configOpenloopRamp(RAMPUP);
+	  rightBack.configOpenloopRamp(RAMPUP);
+  }
+
 	/**
 	 * Read the current state from the hardware, like the current speed. This information
 	 * will be used by the controller.
