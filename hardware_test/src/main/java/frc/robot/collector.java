@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-
 public class collector {
     // Joystick controllers
     private robotControls myControllers;

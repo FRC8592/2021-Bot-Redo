@@ -9,19 +9,11 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-// Control and basic infrastructure
-//import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-
-// CTRE imports for Talon motor controllers and Falcon 500 motors (TalonFX)
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import edu.wpi.first.wpilibj.Encoder;
+// Basic infrastructure
+//import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 // Navx
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 
 
 /**
@@ -39,18 +31,10 @@ public class Robot extends TimedRobot {
   // Robot teleop controllers
   robotControls myControllers;
 
-  // Collector control
-  collector robotCollector;
-
-  // Turret motors
-  TalonFX  turretLaunch; // Controls the motor that spins the flywheel to launch the ball
-  TalonSRX ballProcess;  // Moves ball from intake area to ready to fire area
-  TalonSRX ballTrigger;  // brings ball into contact of flywheel for firing
-  TalonSRX turretRotate; // rotates turret assembly
-
-  // Discrete motor encoders
-  Encoder  turretRotateEncoder; // Encoder for turretRotate motor
-
+  // Collector turret and driver control
+  collector  robotCollector;
+  turret     robotTurret;
+  //driveTrain robotDrivertrain
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -65,21 +49,9 @@ public class Robot extends TimedRobot {
     // Initialize robot controllers
     myControllers = new robotControls();
 
-    // Initialize collector control
+    // Initialize collector and turret control
     robotCollector = new collector(myControllers);
-
-    // Create turret control motors
-    turretLaunch = new TalonFX(config_hw.turretLaunchCAN);
-    turretRotate = new TalonSRX(config_hw.turretRotateCAN);
-    ballProcess  = new TalonSRX(config_hw.ballProcessCAN);
-    ballTrigger  = new TalonSRX(config_hw.ballTriggerCAN);
-
-    // Force all motors to 0 RPM
-    turretLaunch.set(ControlMode.PercentOutput, 0);
-    turretLaunch.setInverted(true);
-    turretRotate.set(ControlMode.PercentOutput, 0);
-    ballProcess.set(ControlMode.PercentOutput, 0);
-    ballTrigger.set(ControlMode.PercentOutput, 0);
+    robotTurret    = new turret(myControllers);
   }
 
   /**
@@ -130,34 +102,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    double flywheelSpeed;
-
-    // Update collector control
+    // Update collector and driver control
     robotCollector.collectorPeriodic();
-
-    //
-    // Control the launch flywheel.
-    //
-    flywheelSpeed = myControllers.getAxis(robotControls.flywheelSpeedAxis);                       // Modify (-1, 1) range to (0, 1) range
-    flywheelSpeed = (-flywheelSpeed + 1 ) / 2;      
-
-    SmartDashboard.putNumber("Flywheel", flywheelSpeed);
-    turretLaunch.set(ControlMode.PercentOutput, flywheelSpeed);
-
-    // Engage the ball feed mechanism
-    if (myControllers.getButton(robotControls.launchButton)) {
-      ballProcess.set(ControlMode.PercentOutput, config.ballProcessPower);
-      ballTrigger.set(ControlMode.PercentOutput, config.ballTriggerPower);
-    }
-    else if (myControllers.getButton(robotControls.turretUnjamButton)) {
-      ballProcess.set(ControlMode.PercentOutput, -config.ballProcessPower);
-      ballTrigger.set(ControlMode.PercentOutput, -config.ballTriggerPower);
-    }
-    else {
-      ballProcess.set(ControlMode.PercentOutput, 0);
-      ballTrigger.set(ControlMode.PercentOutput, 0);    
-    }
-
+    robotTurret.turretPeriodic();
   }
 
   /** This function is called once when the robot is disabled. */
