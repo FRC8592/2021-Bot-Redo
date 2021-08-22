@@ -34,7 +34,10 @@ public class Robot extends TimedRobot {
   // Collector turret and driver control
   collector  robotCollector;
   turret     robotTurret;
-  //driveTrain robotDrivertrain
+
+  // Drivetrain
+  DriveTrainModule driveTrain;
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -52,6 +55,7 @@ public class Robot extends TimedRobot {
     // Initialize collector and turret control
     robotCollector = new collector(myControllers);
     robotTurret    = new turret(myControllers);
+    driveTrain     = new DriveTrainModule(myControllers);
   }
 
   /**
@@ -105,6 +109,7 @@ public class Robot extends TimedRobot {
     // Update collector and driver control
     robotCollector.collectorPeriodic();
     robotTurret.turretPeriodic();
+    driveTrain.DriveTrainModulePeriodic();
   }
 
   /** This function is called once when the robot is disabled. */

@@ -66,7 +66,7 @@ public class turret {
         // the throttle control and map any negative numbers to zero
         //
         flywheelSpeed = myControllers.getAxis(robotControls.flywheelSpeedAxis);
-        if (flywheelSpeed < 0) {
+        if (flywheelSpeed  < 0) {
             flywheelSpeed = 0;
         }
         
@@ -87,7 +87,7 @@ public class turret {
         }
 
         // Rotate the turret
-        turretRotation = myControllers.getAxis(robotControls.turretTurnAxis);
+        turretRotation = myControllers.getAxis(robotControls.turretTurnAxis) * config.TURRET_SCALE;
         turretRotate.set(ControlMode.PercentOutput, turretRotation);
     }
 
