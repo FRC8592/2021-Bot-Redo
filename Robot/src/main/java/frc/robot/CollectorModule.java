@@ -24,9 +24,7 @@ public class CollectorModule {
     // Collector position
     private boolean isDeployed = true; // is the collector in the outboard position?
 
-    //
     // Initialize collector
-    //
     public CollectorModule() {
 
         // Start Pneumatics
@@ -86,6 +84,10 @@ public class CollectorModule {
             intakeSpin.set(ControlMode.PercentOutput, 0); // Stop the collector
         }
 
+    }
+
+    public CollectorModuleState readState() {
+        return null;
     }
 
 }

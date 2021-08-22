@@ -10,8 +10,12 @@ public class Robot extends TimedRobot {
 
   private DriveControlsModule driveControlsModule = new DriveControlsModule();
   private DriveTrainModule driveTrainModule = new DriveTrainModule();
+  private CollectorModule collectorModule = new CollectorModule();
+  private TurretModule turretModule = new TurretModule();
   private Telemetry telemetry = new Telemetry();
-  
+  private TeleopController teleopController = new TeleopController();
+
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -48,19 +52,24 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-      // Read the initial state of each relevant module, i.e. get data from the sensors.
-      DriveControlsState driveControlsState = this.driveControlsModule.readState();
-      DriveTrainState driveTrainState = this.driveTrainModule.readState();
+      // Read the initial state of each relevant module, i.e. get data from the sensors.      
+      RobotState robotState = new RobotState();
+      robotState.setCollectorModuleState(collectorModule.readState());
+      robotState.setDriveControlsState(driveControlsModule.readState());
+      robotState.setDriveTrainState(driveTrainModule.readState());
+      robotState.setTurretModuleState(turretModule.readState());
 
       // Use the logic in the controller to determine what the new state should be for each module.
-      TeleopController controller = new TeleopController(driveControlsState, driveTrainState);
-      controller.control();
+      this.teleopController.control(robotState);
 
       // Write the new state of each module, i.e. actually send signals to the hardware.
-      driveTrainModule.writeState(driveTrainState);
+      this.collectorModule.writeState(robotState.getCollectorModuleState());
+      this.driveControlsModule.writeState(robotState.getDriveControlsState());
+      this.driveTrainModule.writeState(robotState.getDriveTrainState());
+      this.turretModule.writeState(robotState.getTurretModuleState());
 
       // Send telemetry.
-      this.telemetry.send(driveControlsState, driveTrainState);
+      this.telemetry.send(robotState.getDriveControlsState(), robotState.getDriveTrainState());
   }
 
   /** This function is called once when the robot is disabled. */

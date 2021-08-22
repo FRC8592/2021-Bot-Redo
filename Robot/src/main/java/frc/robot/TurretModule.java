@@ -43,12 +43,14 @@ public class TurretModule {
         ballTrigger.set(ControlMode.PercentOutput, 0);
     }
 
+    public TurretModuleState readState() {
+        return null;
+    }
+
     //
     // Turret controls
     //
-    public void turretPeriodic(TurretModuleState state) {
-        double flywheelSpeed;
-        double turretRotation;
+    public void writeState(TurretModuleState state) {
 
         //
         // Control the launch flywheel.
@@ -65,8 +67,8 @@ public class TurretModule {
         // 1) portion of
         // the throttle control and map any negative numbers to zero
         //
-        flywheelSpeed = state.getFlywheelSpeed();
 
+        double flywheelSpeed = state.getFlywheelSpeed();
         if (flywheelSpeed < 0) {
             flywheelSpeed = 0;
         }
