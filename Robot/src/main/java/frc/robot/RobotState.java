@@ -3,9 +3,9 @@ package frc.robot;
 public class RobotState {
     
     private DriveTrainState driveTrainState;
-    private DriveControlsState driveControlsState;
-    private TurretModuleState turretModuleState;
-    private CollectorModuleState collectorModuleState;
+    private ControlsState driveControlsState;
+    private TurretState turretModuleState;
+    private CollectorState collectorModuleState;
 
     public DriveTrainState getDriveTrainState() {
         return driveTrainState;
@@ -15,27 +15,27 @@ public class RobotState {
         this.driveTrainState = driveTrainState;
     }
 
-    public DriveControlsState getDriveControlsState() {
+    public ControlsState getDriveControlsState() {
         return driveControlsState;
     }
 
-    public void setDriveControlsState(DriveControlsState driveControlsState) {
+    public void setDriveControlsState(ControlsState driveControlsState) {
         this.driveControlsState = driveControlsState;
     }
 
-    public TurretModuleState getTurretModuleState() {
+    public TurretState getTurretModuleState() {
         return turretModuleState;
     }
 
-    public void setTurretModuleState(TurretModuleState turretModuleState) {
+    public void setTurretModuleState(TurretState turretModuleState) {
         this.turretModuleState = turretModuleState;
     }
 
-    public CollectorModuleState getCollectorModuleState() {
+    public CollectorState getCollectorModuleState() {
         return collectorModuleState;
     }
 
-    public void setCollectorModuleState(CollectorModuleState collectorModuleState) {
+    public void setCollectorModuleState(CollectorState collectorModuleState) {
         this.collectorModuleState = collectorModuleState;
     }
 

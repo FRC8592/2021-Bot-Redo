@@ -1,6 +1,6 @@
 package frc.robot;
 
-public class TurretModuleState {
+public class TurretState {
 
     private double flywheelSpeed;
     private boolean isLaunching;
@@ -61,7 +61,7 @@ public class TurretModuleState {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        TurretModuleState other = (TurretModuleState) obj;
+        TurretState other = (TurretState) obj;
         if (Double.doubleToLongBits(flywheelSpeed) != Double.doubleToLongBits(other.flywheelSpeed))
             return false;
         if (isLaunching != other.isLaunching)

@@ -1,6 +1,6 @@
 package frc.robot;
 
-public class CollectorModuleState {
+public class CollectorState {
 
     private boolean isDeploying;
     private boolean isUndeploying;

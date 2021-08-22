@@ -9,7 +9,7 @@ public class TeleopControllerTest {
   public void testSetsMaxSpeed() {
 
     // Given a TeleopController
-    DriveControlsState driveControlsState = new DriveControlsState();
+    ControlsState driveControlsState = new ControlsState();
     DriveTrainState driveTrainState = new DriveTrainState();
     TeleopController teleopController = new TeleopController(driveControlsState, driveTrainState);
 
@@ -27,7 +27,7 @@ public class TeleopControllerTest {
   public void testSetsQuarterSpeed() {
 
     // Given a TeleopController
-    DriveControlsState driveControlsState = new DriveControlsState();
+    ControlsState driveControlsState = new ControlsState();
     DriveTrainState driveTrainState = new DriveTrainState();
     TeleopController teleopController = new TeleopController(driveControlsState, driveTrainState);
 
@@ -45,7 +45,7 @@ public class TeleopControllerTest {
   public void testNegativeForwardBackwardInput() {
 
     // Given a TeleopController
-    DriveControlsState driveControlsState = new DriveControlsState();
+    ControlsState driveControlsState = new ControlsState();
     DriveTrainState driveTrainState = new DriveTrainState();
     TeleopController teleopController = new TeleopController(driveControlsState, driveTrainState);
 

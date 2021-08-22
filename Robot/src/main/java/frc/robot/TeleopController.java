@@ -14,17 +14,17 @@ public class TeleopController {
         // Control the robot by reading some state values, applying some logic to them,
         // and setting other state values.
 
-        DriveControlsState driveControlsState = robotState.getDriveControlsState();
+        ControlsState driveControlsState = robotState.getDriveControlsState();
         DriveTrainState driveTrainState = robotState.getDriveTrainState();
-        TurretModuleState turretModuleState = robotState.getTurretModuleState();
-        CollectorModuleState collectorModuleState = robotState.getCollectorModuleState();
+        TurretState turretModuleState = robotState.getTurretModuleState();
+        CollectorState collectorModuleState = robotState.getCollectorModuleState();
 
         controlDriveTrain(driveControlsState, driveTrainState);
         controlTurret(driveControlsState, turretModuleState);
         controlCollector(driveControlsState, collectorModuleState);
     }
 
-    private void controlDriveTrain(DriveControlsState driveControlsState, DriveTrainState driveTrainState) {
+    private void controlDriveTrain(ControlsState driveControlsState, DriveTrainState driveTrainState) {
         // Set the desired speed of the robot based on the forwardBackward input from
         // the controls
         double controlPosition = driveControlsState.getForwardBackward();
@@ -40,13 +40,13 @@ public class TeleopController {
         driveTrainState.setDesiredRotation(desiredRotation);
     }
 
-    private void controlCollector(DriveControlsState driveControlsState, CollectorModuleState collectorModuleState) {
+    private void controlCollector(ControlsState driveControlsState, CollectorState collectorModuleState) {
         collectorModuleState.setDeploying(driveControlsState.getCollectorDown());
         collectorModuleState.setUneploying(driveControlsState.getCollectorUp());
         collectorModuleState.setUnjamming(driveControlsState.getCollectorUnjam());
     }
 
-    private void controlTurret(DriveControlsState driveControlsState, TurretModuleState turretModuleState) {
+    private void controlTurret(ControlsState driveControlsState, TurretState turretModuleState) {
     }
 
 }

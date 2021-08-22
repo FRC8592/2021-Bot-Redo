@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
  * update it using a controller. Then we write the new, desired state back to
  * the module. We also send the updated state as telemetry.
  */
-public class DriveControlsModule {
+public class ControlsModule {
 
     //
     // Define joystick names. Each name must have an associated USB ID.
@@ -50,7 +50,7 @@ public class DriveControlsModule {
     //
     // Create joystick objects from the definitions above
     //
-    public DriveControlsModule() {
+    public ControlsModule() {
         for (int i = 0; i < JOYSTICKS.length; i++) {
             m_joysticks[JOYSTICKS[i]] = new Joystick(JOYSTICKS[i]);
         }
@@ -78,8 +78,8 @@ public class DriveControlsModule {
      * have to evaluate from the hardware that could change multiple times during
      * the cycle and the algorithm will be harder to write.
      */
-    public DriveControlsState readState() {
-        DriveControlsState state = new DriveControlsState();
+    public ControlsState readState() {
+        ControlsState state = new ControlsState();
 
         // Drive controls
         state.setForwardBackward(getAxis(FORWARD_REV_AXIS));
@@ -95,7 +95,7 @@ public class DriveControlsModule {
         return state;
     }
 
-    public void writeState(DriveControlsState driveControlsState) {
+    public void writeState(ControlsState driveControlsState) {
     }
 
 }

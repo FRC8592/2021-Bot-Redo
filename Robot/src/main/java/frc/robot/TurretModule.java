@@ -43,14 +43,14 @@ public class TurretModule {
         ballTrigger.set(ControlMode.PercentOutput, 0);
     }
 
-    public TurretModuleState readState() {
+    public TurretState readState() {
         return null;
     }
 
     //
     // Turret controls
     //
-    public void writeState(TurretModuleState state) {
+    public void writeState(TurretState state) {
 
         //
         // Control the launch flywheel.

@@ -11,7 +11,7 @@ import java.util.Map;
  * that instance, we write it back to the module, which updates the desired
  * output of the motors. The updated instance is also sent as telemetry.
  */
-public class DriveControlsState implements TelemetrySource {
+public class ControlsState implements TelemetrySource {
 
     private double forwardBackward;
     private double leftRight;

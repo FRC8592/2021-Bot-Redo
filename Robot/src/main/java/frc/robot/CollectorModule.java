@@ -46,7 +46,7 @@ public class CollectorModule {
     //
     // Collector Controls
     //
-    public void writeState(CollectorModuleState state) {
+    public void writeState(CollectorState state) {
 
         boolean isDeploying = state.isDeploying();
         boolean isUndeploying = state.isUndeploying();
@@ -86,7 +86,7 @@ public class CollectorModule {
 
     }
 
-    public CollectorModuleState readState() {
+    public CollectorState readState() {
         return null;
     }
 

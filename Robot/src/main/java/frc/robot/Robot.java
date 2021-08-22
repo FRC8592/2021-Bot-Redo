@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
 
-  private DriveControlsModule driveControlsModule = new DriveControlsModule();
+  private ControlsModule driveControlsModule = new ControlsModule();
   private DriveTrainModule driveTrainModule = new DriveTrainModule();
   private CollectorModule collectorModule = new CollectorModule();
   private TurretModule turretModule = new TurretModule();
