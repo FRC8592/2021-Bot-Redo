@@ -48,9 +48,9 @@ public class CollectorModule {
     //
     public void writeState(CollectorState state) {
 
-        boolean isDeploying = state.isDeploying();
-        boolean isUndeploying = state.isUndeploying();
-        boolean isUnjamming = state.isUnjamming();
+        boolean isDeploying = state.isCollectorDeploying();
+        boolean isUndeploying = state.isCollectorUndeploying();
+        boolean isUnjamming = state.isCollectorUnjamming();
 
         //
         // Update whether the module considers the collector "deployed"

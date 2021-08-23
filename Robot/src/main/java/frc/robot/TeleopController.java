@@ -24,33 +24,32 @@ public class TeleopController {
         controlCollector(driveControlsState, collectorModuleState);
     }
 
-    private void controlDriveTrain(ControlsState driveControlsState, DriveTrainState driveTrainState) {
+    private void controlDriveTrain(ControlsState controlsState, DriveTrainState driveTrainState) {
         // Set the desired speed of the robot based on the forwardBackward input from
         // the controls. Square the input, so the controls are more forgiving. Half
         // forward is .25 throttle. Full forward is still 1.0 throttle.
-        double controlPosition = driveControlsState.getForwardBackwardAxis();
+        double controlPosition = controlsState.getAxisForwardReverse();
         double desiredSpeed = Math.pow(controlPosition, 2);
         if (controlPosition < 0) {
             desiredSpeed = desiredSpeed * -1; // Make the negative inputs stay negative after being squared
         }
-        driveTrainState.setDesiredSpeed(desiredSpeed);
+        driveTrainState.setDriveSpeed(desiredSpeed);
 
-        double desiredRotation = driveControlsState.getLeftRightAxis();
-        driveTrainState.setDesiredRotation(desiredRotation);
+        driveTrainState.setDriveRotation(controlsState.getAxisLeftRight());
     }
 
     private void controlCollector(ControlsState controlsState, CollectorState collectorState) {
-        collectorState.setDeploying(controlsState.isCollectorDownButton());
-        collectorState.setUndeploying(controlsState.isCollectorUpButton());
-        collectorState.setUnjamming(controlsState.isCollectorUnjamButton());
+        collectorState.setCollectorDeploying(controlsState.isButtonCollectorDown());
+        collectorState.setCollectorUndeploying(controlsState.isButtonCollectorUp());
+        collectorState.setCollectorUnjamming(controlsState.isButtonCollectorUnjam());
     }
 
     private void controlTurret(ControlsState controlsState, TurretState turretState) {
-        turretState.setFlywheelStart(controlsState.isFlywheelStartButton());
-        turretState.setFlywheelStop(controlsState.isFlywheelStopButton());
-        turretState.setFlywheelSpeed(controlsState.getFlywheelSpeedAxis());
-        turretState.setLaunching(controlsState.isLaunchButton());
-        turretState.setUnjamming(controlsState.isTurretUnjamButton());
-        turretState.setTurretRotation(controlsState.getTurretAxis());
+        turretState.setTurretFlywheelStart(controlsState.isButtonTurretFlywheelStart());
+        turretState.setTurretFlywheelStop(controlsState.isButtonTurretFlywheelStop());
+        turretState.setTurretFlywheelSpeed(controlsState.getAxisTurretFlywheelSpeed());
+        turretState.setTurretLaunching(controlsState.isButtonTurretLaunch());
+        turretState.setTurretUnjamming(controlsState.isButtonTurretUnjam());
+        turretState.setTurretRotation(controlsState.getAxisTurretRotation());
     }
 }

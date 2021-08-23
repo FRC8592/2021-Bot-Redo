@@ -64,19 +64,18 @@ public class TurretModule {
         // the throttle control and map any negative numbers to zero
         //
 
-        double flywheelSpeed = state.getFlywheelSpeed();
+        double flywheelSpeed = state.getTurretFlywheelSpeed();
         if (flywheelSpeed < 0) {
             flywheelSpeed = 0;
         }
 
-        SmartDashboard.putNumber("Flywheel", flywheelSpeed);
         turretLaunch.set(ControlMode.PercentOutput, flywheelSpeed);
 
         // Engage the ball feed mechanism. Unjam always has priority
-        if (state.isUnjamming()) {
+        if (state.isTurretUnjamming()) {
             ballProcess.set(ControlMode.PercentOutput, -Config.ballProcessPower);
             ballTrigger.set(ControlMode.PercentOutput, -Config.ballTriggerPower);
-        } else if (state.isLaunching()) {
+        } else if (state.isTurretLaunching()) {
             ballProcess.set(ControlMode.PercentOutput, Config.ballProcessPower);
             ballTrigger.set(ControlMode.PercentOutput, Config.ballTriggerPower);
         } else {

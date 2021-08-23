@@ -43,8 +43,8 @@ public class DriveTrainModule {
 	 * update some values, like current speed.
 	 */
 	public void writeState(DriveTrainState driveTrainState) {
-		double desiredSpeed = driveTrainState.getDesiredSpeed();
-		double desiredRotation = driveTrainState.getDesiredRotation();
+		double desiredSpeed = driveTrainState.getDriveSpeed();
+		double desiredRotation = driveTrainState.getDriveRotation();
 		robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
 	}
 

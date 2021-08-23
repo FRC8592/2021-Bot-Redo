@@ -43,12 +43,12 @@ public class ControlsModule {
     private static final int[] TURRET_AXIS = { TURRET_STICK, 2 };
 
     // Array to hold joystick objects
-    private Joystick[] m_joysticks = new Joystick[JOYSTICKS.length];
+    private Joystick[] joysticks = new Joystick[JOYSTICKS.length];
 
     public ControlsModule() {
         // Create joystick objects from the definitions above
         for (int i = 0; i < JOYSTICKS.length; i++) {
-            m_joysticks[JOYSTICKS[i]] = new Joystick(JOYSTICKS[i]);
+            joysticks[JOYSTICKS[i]] = new Joystick(JOYSTICKS[i]);
         }
     }
 
@@ -56,14 +56,14 @@ public class ControlsModule {
      * Check whether a button is pressed - true means it is pressed
      */
     private boolean getButton(int[] buttonConstant) {
-        return m_joysticks[buttonConstant[0]].getRawButton(buttonConstant[1]);
+        return joysticks[buttonConstant[0]].getRawButton(buttonConstant[1]);
     }
 
     /**
      * Get value for a joystick axis
      */
     private double getAxis(int[] axisConstant) {
-        return m_joysticks[axisConstant[0]].getRawAxis(axisConstant[1]);
+        return joysticks[axisConstant[0]].getRawAxis(axisConstant[1]);
     }
 
     /**
@@ -77,21 +77,21 @@ public class ControlsModule {
     public ControlsState readState(ControlsState state) {
 
         // Drive train controls
-        state.setForwardBackwardAxis(getAxis(FORWARD_REV_AXIS));
-        state.setLeftRightAxis(getAxis(TURN_AXIS));
+        state.setAxisForwardReverse(getAxis(FORWARD_REV_AXIS));
+        state.setAxisLeftRight(getAxis(TURN_AXIS));
 
         // Collector controls
-        state.setCollectorDownButton(getButton(COLLECT_DOWN_BUTTON));
-        state.setCollectorUpButton(getButton(COLLECT_UP_BUTTON));
-        state.setCollectorUnjamButton(getButton(COLLECT_UNJAM_BUTTON));
+        state.setButtonCollectorDown(getButton(COLLECT_DOWN_BUTTON));
+        state.setButtonCollectorUp(getButton(COLLECT_UP_BUTTON));
+        state.setButtonCollectorUnjam(getButton(COLLECT_UNJAM_BUTTON));
 
         // Turret controls
-        state.setFlywheelStartButton(getButton(FLYWHEEL_START_BUTTON));
-        state.setFlywheelStopButton(getButton(FLYWHEEL_STOP_BUTTON));
-        state.setFlywheelSpeedAxis(getAxis(FLYWHEEL_SPEED_AXIS));
-        state.setLaunchButton(getButton(LAUNCH_BUTTON));
-        state.setTurretUnjamButton(getButton(TURRET_UNJAM_BUTTON));
-        state.setTurretAxis(getAxis(TURRET_AXIS));
+        state.setButtonTurretFlywheelStart(getButton(FLYWHEEL_START_BUTTON));
+        state.setButtonTurretFlywheelStop(getButton(FLYWHEEL_STOP_BUTTON));
+        state.setAxisTurretFlywheelSpeed(getAxis(FLYWHEEL_SPEED_AXIS));
+        state.setButtonTurretLaunch(getButton(LAUNCH_BUTTON));
+        state.setButtonTurretUnjam(getButton(TURRET_UNJAM_BUTTON));
+        state.setAxisTurretRotation(getAxis(TURRET_AXIS));
 
         return state;
     }

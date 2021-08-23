@@ -13,17 +13,17 @@ import java.util.Map;
  */
 public class ControlsState implements TelemetrySource {
 
-    private double forwardBackwardAxis;
-    private double leftRightAxis;
-    private boolean collectorUpButton;
-    private boolean collectorDownButton;
-    private boolean collectorUnjamButton;
-    private boolean flywheelStartButton;
-    private boolean flywheelStopButton;
-    private double flywheelSpeedAxis;
-    private boolean launchButton;
-    private boolean turretUnjamButton;
-    private double turretAxis;
+    private double axisForwardReverse;
+    private double axisLeftRight;
+    private boolean buttonCollectorUp;
+    private boolean buttonCollectorDown;
+    private boolean buttonCollectorUnjam;
+    private boolean buttonTurretFlywheelStart;
+    private boolean buttonTurretFlywheelStop;
+    private double axisTurretFlywheelSpeed;
+    private boolean buttonTurretLaunch;
+    private boolean buttonTurretUnjam;
+    private double axisTurretRotation;
 
     /**
      * Store convert all data represented by this class into a HashMap so that the
@@ -37,106 +37,107 @@ public class ControlsState implements TelemetrySource {
         Map<String, Double> data = new HashMap<String, Double>();
 
         // Add all of the data represented by this class to the Map
-        data.put("forwardBackwardAxis", this.getForwardBackwardAxis());
-        data.put("leftRightAxis", this.getLeftRightAxis());
-        data.put("collectorUpButton", this.isCollectorUpButton() ? 1.0 : 0.0);
-        data.put("collectorDownButton", this.isCollectorDownButton() ? 1.0 : 0.0);
-        data.put("collectorUnjamButton", this.isCollectorUnjamButton() ? 1.0 : 0.0);
-        data.put("flywheelStartButton", this.isFlywheelStartButton() ? 1.0 : 0.0);
-        data.put("flywheelStopButton", this.isFlywheelStopButton() ? 1.0 : 0.0);
-        data.put("flywheelSpeedAxis", this.getFlywheelSpeedAxis());
-        data.put("launchButton", this.isLaunchButton() ? 1.0 : 0.0);
-        data.put("turretUnjamButton", this.isTurretUnjamButton() ? 1.0 : 0.0);
-        data.put("turretAxis", this.getTurretAxis());
+        data.put("axisForwardReverse", axisForwardReverse);
+        data.put("axisLeftRight", axisLeftRight);
+        data.put("buttonCollectorUp", buttonCollectorUp ? 1.0 : 0.0);
+        data.put("buttonCollectorDown", buttonCollectorDown ? 1.0 : 0.0);
+        data.put("buttonCollectorUnjam", buttonCollectorUnjam ? 1.0 : 0.0);
+        data.put("buttonTurretFlywheelStart", buttonTurretFlywheelStart ? 1.0 : 0.0);
+        data.put("buttonTurretFlywheelStop", buttonTurretFlywheelStop ? 1.0 : 0.0);
+        data.put("axisTurretFlywheelSpeed", axisTurretFlywheelSpeed);
+        data.put("buttonTurretLaunch", buttonTurretLaunch ? 1.0 : 0.0);
+        data.put("buttonTurretUnjam", buttonTurretUnjam ? 1.0 : 0.0);
+        data.put("axisTurretRotation", axisTurretRotation);
 
         return data;
     }
 
-    public double getForwardBackwardAxis() {
-        return forwardBackwardAxis;
+    public double getAxisForwardReverse() {
+        return axisForwardReverse;
     }
 
-    public void setForwardBackwardAxis(double forwardBackwardAxis) {
-        this.forwardBackwardAxis = forwardBackwardAxis;
+    public void setAxisForwardReverse(double axisForwardReverse) {
+        this.axisForwardReverse = axisForwardReverse;
     }
 
-    public double getLeftRightAxis() {
-        return leftRightAxis;
+    public double getAxisLeftRight() {
+        return axisLeftRight;
     }
 
-    public void setLeftRightAxis(double leftRightAxis) {
-        this.leftRightAxis = leftRightAxis;
+    public void setAxisLeftRight(double axisLeftRight) {
+        this.axisLeftRight = axisLeftRight;
     }
 
-    public boolean isCollectorUpButton() {
-        return collectorUpButton;
+    public boolean isButtonCollectorUp() {
+        return buttonCollectorUp;
     }
 
-    public void setCollectorUpButton(boolean collectorUpButton) {
-        this.collectorUpButton = collectorUpButton;
+    public void setButtonCollectorUp(boolean buttonCollectorUp) {
+        this.buttonCollectorUp = buttonCollectorUp;
     }
 
-    public boolean isCollectorDownButton() {
-        return collectorDownButton;
+    public boolean isButtonCollectorDown() {
+        return buttonCollectorDown;
     }
 
-    public void setCollectorDownButton(boolean collectorDownButton) {
-        this.collectorDownButton = collectorDownButton;
+    public void setButtonCollectorDown(boolean buttonCollectorDown) {
+        this.buttonCollectorDown = buttonCollectorDown;
     }
 
-    public boolean isCollectorUnjamButton() {
-        return collectorUnjamButton;
+    public boolean isButtonCollectorUnjam() {
+        return buttonCollectorUnjam;
     }
 
-    public void setCollectorUnjamButton(boolean collectorUnjamButton) {
-        this.collectorUnjamButton = collectorUnjamButton;
+    public void setButtonCollectorUnjam(boolean buttonCollectorUnjam) {
+        this.buttonCollectorUnjam = buttonCollectorUnjam;
     }
 
-    public boolean isFlywheelStartButton() {
-        return flywheelStartButton;
+    public boolean isButtonTurretFlywheelStart() {
+        return buttonTurretFlywheelStart;
     }
 
-    public void setFlywheelStartButton(boolean flywheelStartButton) {
-        this.flywheelStartButton = flywheelStartButton;
+    public void setButtonTurretFlywheelStart(boolean buttonTurretFlywheelStart) {
+        this.buttonTurretFlywheelStart = buttonTurretFlywheelStart;
     }
 
-    public boolean isFlywheelStopButton() {
-        return flywheelStopButton;
+    public boolean isButtonTurretFlywheelStop() {
+        return buttonTurretFlywheelStop;
     }
 
-    public void setFlywheelStopButton(boolean flywheelStopButton) {
-        this.flywheelStopButton = flywheelStopButton;
+    public void setButtonTurretFlywheelStop(boolean buttonTurretFlywheelStop) {
+        this.buttonTurretFlywheelStop = buttonTurretFlywheelStop;
     }
 
-    public double getFlywheelSpeedAxis() {
-        return flywheelSpeedAxis;
+    public double getAxisTurretFlywheelSpeed() {
+        return axisTurretFlywheelSpeed;
     }
 
-    public void setFlywheelSpeedAxis(double flywheelSpeedAxis) {
-        this.flywheelSpeedAxis = flywheelSpeedAxis;
+    public void setAxisTurretFlywheelSpeed(double axisTurretFlywheelSpeed) {
+        this.axisTurretFlywheelSpeed = axisTurretFlywheelSpeed;
     }
 
-    public boolean isLaunchButton() {
-        return launchButton;
+    public boolean isButtonTurretLaunch() {
+        return buttonTurretLaunch;
     }
 
-    public void setLaunchButton(boolean launchButton) {
-        this.launchButton = launchButton;
+    public void setButtonTurretLaunch(boolean buttonTurretLaunch) {
+        this.buttonTurretLaunch = buttonTurretLaunch;
     }
 
-    public boolean isTurretUnjamButton() {
-        return turretUnjamButton;
+    public boolean isButtonTurretUnjam() {
+        return buttonTurretUnjam;
     }
 
-    public void setTurretUnjamButton(boolean turretUnjamButton) {
-        this.turretUnjamButton = turretUnjamButton;
+    public void setButtonTurretUnjam(boolean buttonTurretUnjam) {
+        this.buttonTurretUnjam = buttonTurretUnjam;
     }
 
-    public double getTurretAxis() {
-        return turretAxis;
+    public double getAxisTurretRotation() {
+        return axisTurretRotation;
     }
 
-    public void setTurretAxis(double turretAxis) {
-        this.turretAxis = turretAxis;
+    public void setAxisTurretRotation(double axisTurretRotation) {
+        this.axisTurretRotation = axisTurretRotation;
     }
+
 }
