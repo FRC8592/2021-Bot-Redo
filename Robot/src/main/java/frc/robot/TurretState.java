@@ -6,6 +6,8 @@ public class TurretState {
     private boolean isLaunching;
     private boolean isUnjamming;
     private double turretRotation;
+    private boolean isFlywheelStart;
+    private boolean isFlywheelStop;
 
     public double getFlywheelSpeed() {
         return flywheelSpeed;
@@ -39,44 +41,20 @@ public class TurretState {
         this.turretRotation = turretRotation;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        long temp;
-        temp = Double.doubleToLongBits(flywheelSpeed);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + (isLaunching ? 1231 : 1237);
-        result = prime * result + (isUnjamming ? 1231 : 1237);
-        temp = Double.doubleToLongBits(turretRotation);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
+    public boolean isFlywheelStart() {
+        return isFlywheelStart;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        TurretState other = (TurretState) obj;
-        if (Double.doubleToLongBits(flywheelSpeed) != Double.doubleToLongBits(other.flywheelSpeed))
-            return false;
-        if (isLaunching != other.isLaunching)
-            return false;
-        if (isUnjamming != other.isUnjamming)
-            return false;
-        if (Double.doubleToLongBits(turretRotation) != Double.doubleToLongBits(other.turretRotation))
-            return false;
-        return true;
+    public void setFlywheelStart(boolean isFlywheelStart) {
+        this.isFlywheelStart = isFlywheelStart;
     }
 
-    @Override
-    public String toString() {
-        return "TurretModuleState [flywheelSpeed=" + flywheelSpeed + ", isLaunching=" + isLaunching + ", isUnjamming="
-                + isUnjamming + ", turretRotation=" + turretRotation + "]";
+    public boolean isFlywheelStop() {
+        return isFlywheelStop;
     }
-    
+
+    public void setFlywheelStop(boolean isFlywheelStop) {
+        this.isFlywheelStop = isFlywheelStop;
+    }
+
 }

@@ -13,11 +13,11 @@ import java.util.Map;
  */
 public class ControlsState implements TelemetrySource {
 
-    private double forwardBackward;
-    private double leftRight;
-    private boolean collectorUp;
-    private boolean collectorDown;
-    private boolean collectorUnjam;
+    private double forwardBackwardAxis;
+    private double leftRightAxis;
+    private boolean collectorUpButton;
+    private boolean collectorDownButton;
+    private boolean collectorUnjamButton;
     private boolean flywheelStartButton;
     private boolean flywheelStopButton;
     private double flywheelSpeedAxis;
@@ -25,44 +25,71 @@ public class ControlsState implements TelemetrySource {
     private boolean turretUnjamButton;
     private double turretAxis;
 
-    public double getForwardBackward() {
-        return this.forwardBackward;
+    /**
+     * Store convert all data represented by this class into a HashMap so that the
+     * Telemetry class can more easily consume data from any module.
+     * 
+     * @see frc.robot.Telemetry
+     * @see frc.robot.TelemetrySource
+     */
+    @Override
+    public Map<String, Double> getTelemetryData() {
+        Map<String, Double> data = new HashMap<String, Double>();
+
+        // Add all of the data represented by this class to the Map
+        data.put("forwardBackwardAxis", this.getForwardBackwardAxis());
+        data.put("leftRightAxis", this.getLeftRightAxis());
+        data.put("collectorUpButton", this.isCollectorUpButton() ? 1.0 : 0.0);
+        data.put("collectorDownButton", this.isCollectorDownButton() ? 1.0 : 0.0);
+        data.put("collectorUnjamButton", this.isCollectorUnjamButton() ? 1.0 : 0.0);
+        data.put("flywheelStartButton", this.isFlywheelStartButton() ? 1.0 : 0.0);
+        data.put("flywheelStopButton", this.isFlywheelStopButton() ? 1.0 : 0.0);
+        data.put("flywheelSpeedAxis", this.getFlywheelSpeedAxis());
+        data.put("launchButton", this.isLaunchButton() ? 1.0 : 0.0);
+        data.put("turretUnjamButton", this.isTurretUnjamButton() ? 1.0 : 0.0);
+        data.put("turretAxis", this.getTurretAxis());
+
+        return data;
     }
 
-    public void setForwardBackward(double forwardBackwardInput) {
-        this.forwardBackward = forwardBackwardInput;
+    public double getForwardBackwardAxis() {
+        return forwardBackwardAxis;
     }
 
-    public double getLeftRight() {
-        return this.leftRight;
+    public void setForwardBackwardAxis(double forwardBackwardAxis) {
+        this.forwardBackwardAxis = forwardBackwardAxis;
     }
 
-    public void setLeftRight(double leftRightInput) {
-        this.leftRight = leftRightInput;
+    public double getLeftRightAxis() {
+        return leftRightAxis;
     }
 
-    public boolean getCollectorUp() {
-        return collectorUp;
+    public void setLeftRightAxis(double leftRightAxis) {
+        this.leftRightAxis = leftRightAxis;
     }
 
-    public void setCollectorUp(boolean collectorUp) {
-        this.collectorUp = collectorUp;
+    public boolean isCollectorUpButton() {
+        return collectorUpButton;
     }
 
-    public boolean getCollectorDown() {
-        return collectorDown;
+    public void setCollectorUpButton(boolean collectorUpButton) {
+        this.collectorUpButton = collectorUpButton;
     }
 
-    public void setCollectorDown(boolean collectorDown) {
-        this.collectorDown = collectorDown;
+    public boolean isCollectorDownButton() {
+        return collectorDownButton;
     }
 
-    public boolean getCollectorUnjam() {
-        return collectorUnjam;
+    public void setCollectorDownButton(boolean collectorDownButton) {
+        this.collectorDownButton = collectorDownButton;
     }
 
-    public void setCollectorUnjam(boolean collectorUnjam) {
-        this.collectorUnjam = collectorUnjam;
+    public boolean isCollectorUnjamButton() {
+        return collectorUnjamButton;
+    }
+
+    public void setCollectorUnjamButton(boolean collectorUnjamButton) {
+        this.collectorUnjamButton = collectorUnjamButton;
     }
 
     public boolean isFlywheelStartButton() {
@@ -111,32 +138,5 @@ public class ControlsState implements TelemetrySource {
 
     public void setTurretAxis(double turretAxis) {
         this.turretAxis = turretAxis;
-    }
-
-    /**
-     * Store convert all data represented by this class into a HashMap so that the
-     * Telemetry class can more easily consume data from any module.
-     * 
-     * @see frc.robot.Telemetry
-     * @see frc.robot.TelemetrySource
-     */
-    @Override
-    public Map<String, Double> getTelemetryData() {
-        Map<String, Double> data = new HashMap<String, Double>();
-
-        // Add all of the data represented by this class to the Map
-        data.put("forwardBackward", getForwardBackward());
-        data.put("leftRight", getLeftRight());
-        data.put("collectorUp", getLeftRight());
-        data.put("collectorDown", getLeftRight());
-        data.put("collectorUnjam", getLeftRight());
-        data.put("flywheelStartButton", getLeftRight());
-        data.put("flywheelStopButton", getLeftRight());
-        data.put("flywheelSpeedAxis", getLeftRight());
-        data.put("launchButton", getLeftRight());
-        data.put("turretUnjamButton", getLeftRight());
-        data.put("turretAxis", getLeftRight());
-
-        return data;
     }
 }

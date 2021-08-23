@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class ControlsModule {
 
-    //
     // Define joystick names. Each name must have an associated USB ID.
-    //
     private static final int DRIVE_STICK = 0; // Define USB IDs for joysticks
     private static final int TURRET_STICK = 1; // USB IDs must start with 0
     private static final int[] JOYSTICKS = { DRIVE_STICK, TURRET_STICK };
@@ -47,25 +45,23 @@ public class ControlsModule {
     // Array to hold joystick objects
     private Joystick[] m_joysticks = new Joystick[JOYSTICKS.length];
 
-    //
-    // Create joystick objects from the definitions above
-    //
     public ControlsModule() {
+        // Create joystick objects from the definitions above
         for (int i = 0; i < JOYSTICKS.length; i++) {
             m_joysticks[JOYSTICKS[i]] = new Joystick(JOYSTICKS[i]);
         }
     }
 
-    //
-    // Get status for a button
-    //
+    /**
+     * Check whether a button is pressed - true means it is pressed
+     */
     private boolean getButton(int[] buttonConstant) {
         return m_joysticks[buttonConstant[0]].getRawButton(buttonConstant[1]);
     }
 
-    //
-    // Get value for a joystick axis
-    //
+    /**
+     * Get value for a joystick axis
+     */
     private double getAxis(int[] axisConstant) {
         return m_joysticks[axisConstant[0]].getRawAxis(axisConstant[1]);
     }
@@ -81,15 +77,16 @@ public class ControlsModule {
     public ControlsState readState() {
         ControlsState state = new ControlsState();
 
-        // Drive controls
-        state.setForwardBackward(getAxis(FORWARD_REV_AXIS));
-        state.setLeftRight(getAxis(TURN_AXIS));
+        // Drive train controls
+        state.setForwardBackwardAxis(getAxis(FORWARD_REV_AXIS));
+        state.setLeftRightAxis(getAxis(TURN_AXIS));
 
         // Collector controls
-        state.setCollectorDown(getButton(COLLECT_DOWN_BUTTON));
-        state.setCollectorUp(getButton(COLLECT_UP_BUTTON));
-        state.setCollectorUnjam(getButton(COLLECT_UNJAM_BUTTON));
+        state.setCollectorDownButton(getButton(COLLECT_DOWN_BUTTON));
+        state.setCollectorUpButton(getButton(COLLECT_UP_BUTTON));
+        state.setCollectorUnjamButton(getButton(COLLECT_UNJAM_BUTTON));
 
+        // Turret controls
         state.setFlywheelStartButton(getButton(FLYWHEEL_START_BUTTON));
         state.setFlywheelStopButton(getButton(FLYWHEEL_STOP_BUTTON));
         state.setFlywheelSpeedAxis(getAxis(FLYWHEEL_SPEED_AXIS));
