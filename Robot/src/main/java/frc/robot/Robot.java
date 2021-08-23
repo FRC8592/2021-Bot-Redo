@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
 
       // Read the initial state of each relevant module, i.e. get data from the sensors.      
       RobotState robotState = new RobotState();
-      robotState.setCollectorModuleState(collectorModule.readState());
+      robotState.setCollectorModuleState(collectorModule.readState()); // TODO: if needed for performance, reduce object churn by passing objects to readState()
       robotState.setDriveControlsState(driveControlsModule.readState());
       robotState.setDriveTrainState(driveTrainModule.readState());
       robotState.setTurretModuleState(turretModule.readState());
