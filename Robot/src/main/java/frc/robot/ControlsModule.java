@@ -36,10 +36,10 @@ public class ControlsModule {
 
     // Turret control
     private static final int[] FLYWHEEL_START_BUTTON = { TURRET_STICK, 1 };
-    private static final int[] FLYWHEEL_STOP_BUTTON = { TURRET_STICK, 1 };
+    private static final int[] FLYWHEEL_STOP_BUTTON = { TURRET_STICK, 2 };
     private static final int[] FLYWHEEL_SPEED_AXIS = { TURRET_STICK, 3 }; // Launch speed is adjustable
-    private static final int[] LAUNCH_BUTTON = { TURRET_STICK, 1 };
-    private static final int[] TURRET_UNJAM_BUTTON = { TURRET_STICK, 2 };
+    private static final int[] LAUNCH_BUTTON = { TURRET_STICK, 3 };
+    private static final int[] TURRET_UNJAM_BUTTON = { TURRET_STICK, 4 };
     private static final int[] TURRET_AXIS = { TURRET_STICK, 2 };
 
     // Array to hold joystick objects

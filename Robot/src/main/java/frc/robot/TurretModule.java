@@ -4,9 +4,6 @@
 
 package frc.robot;
 
-// Smart Dashboard classes
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 // Motor control classes
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
