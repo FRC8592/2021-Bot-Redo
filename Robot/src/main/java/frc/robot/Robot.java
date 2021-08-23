@@ -15,10 +15,9 @@ public class Robot extends TimedRobot {
   private Telemetry telemetry = new Telemetry();
   private TeleopController teleopController = new TeleopController();
 
-
   /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
@@ -26,14 +25,17 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before LiveWindow and
-   * SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+  }
 
   @Override
   public void autonomousInit() {
@@ -46,45 +48,55 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+  }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
 
-      // Read the initial state of each relevant module, i.e. get data from the sensors.      
-      RobotState robotState = new RobotState();
-      robotState.setCollectorModuleState(collectorModule.readState()); // TODO: if needed for performance, reduce object churn by passing objects to readState()
-      robotState.setDriveControlsState(driveControlsModule.readState());
-      robotState.setDriveTrainState(driveTrainModule.readState());
-      robotState.setTurretModuleState(turretModule.readState());
+    // Read the initial state of each relevant module, i.e. get data from the
+    // sensors.
+    // TODO: if needed for performance, reduce object churn by passing objects to
+    // readState()
+    RobotState robotState = new RobotState();
+    robotState.setCollectorState(collectorModule.readState());
+    robotState.setControlsState(driveControlsModule.readState());
+    robotState.setDriveTrainState(driveTrainModule.readState());
+    robotState.setTurretState(turretModule.readState());
 
-      // Use the logic in the controller to determine what the new state should be for each module.
-      this.teleopController.control(robotState);
+    // Use the logic in the controller to determine what the new state should be for
+    // each module.
+    this.teleopController.control(robotState);
 
-      // Write the new state of each module, i.e. actually send signals to the hardware.
-      this.collectorModule.writeState(robotState.getCollectorModuleState());
-      this.driveControlsModule.writeState(robotState.getControlsState());
-      this.driveTrainModule.writeState(robotState.getDriveTrainState());
-      this.turretModule.writeState(robotState.getTurretModuleState());
+    // Write the new state of each module, i.e. actually send signals to the
+    // hardware.
+    this.collectorModule.writeState(robotState.getCollectorState());
+    this.driveControlsModule.writeState(robotState.getControlsState());
+    this.driveTrainModule.writeState(robotState.getDriveTrainState());
+    this.turretModule.writeState(robotState.getTurretState());
 
-      // Send telemetry.
-      this.telemetry.send(robotState.getControlsState(), robotState.getDriveTrainState());
+    // Send telemetry.
+    this.telemetry.send(robotState.getControlsState(), robotState.getDriveTrainState());
   }
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+  }
 
   /** This function is called periodically when disabled. */
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+  }
 
   /** This function is called once when test mode is enabled. */
   @Override
-  public void testInit() {}
+  public void testInit() {
+  }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+  }
 }

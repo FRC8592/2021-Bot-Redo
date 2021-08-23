@@ -24,9 +24,9 @@ public class TurretModule {
     // Discrete motor encoders
     Encoder turretRotateEncoder; // Encoder for turretRotate motor
 
-    //
-    // Initialize turret
-    //
+    /**
+     * Initialize turret
+     */
     public TurretModule() {
 
         // Create turret control motors
@@ -47,12 +47,8 @@ public class TurretModule {
         return null;
     }
 
-    //
-    // Turret controls
-    //
     public void writeState(TurretState state) {
 
-        //
         // Control the launch flywheel.
         //
         // I used to transform the joystick throttle such that the range of (-1, 1) was

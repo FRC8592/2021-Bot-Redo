@@ -37,7 +37,7 @@ public class DriveTrainState implements TelemetrySource {
 
         // Add all of the data represented by this class to the Map
         data.put("getDesiredRotation", getDesiredRotation());
-        data.put("getDesiredSpeed", getDesiredSpeed()); 
+        data.put("getDesiredSpeed", getDesiredSpeed());
 
         return data;
     }

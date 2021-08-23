@@ -16,8 +16,8 @@ public class TeleopController {
 
         ControlsState driveControlsState = robotState.getControlsState();
         DriveTrainState driveTrainState = robotState.getDriveTrainState();
-        TurretState turretModuleState = robotState.getTurretModuleState();
-        CollectorState collectorModuleState = robotState.getCollectorModuleState();
+        TurretState turretModuleState = robotState.getTurretState();
+        CollectorState collectorModuleState = robotState.getCollectorState();
 
         controlDriveTrain(driveControlsState, driveTrainState);
         controlTurret(driveControlsState, turretModuleState);
@@ -28,14 +28,14 @@ public class TeleopController {
         // Set the desired speed of the robot based on the forwardBackward input from
         // the controls. Square the input, so the controls are more forgiving. Half
         // forward is .25 throttle. Full forward is still 1.0 throttle.
-        double controlPosition = driveControlsState.getForwardBackward();
+        double controlPosition = driveControlsState.getForwardBackwardAxis();
         double desiredSpeed = Math.pow(controlPosition, 2);
         if (controlPosition < 0) {
             desiredSpeed = desiredSpeed * -1; // Make the negative inputs stay negative after being squared
         }
         driveTrainState.setDesiredSpeed(desiredSpeed);
 
-        double desiredRotation = driveControlsState.getLeftRight();
+        double desiredRotation = driveControlsState.getLeftRightAxis();
         driveTrainState.setDesiredRotation(desiredRotation);
     }
 

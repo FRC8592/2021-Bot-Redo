@@ -1,4 +1,5 @@
 package frc.robot;
+
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -12,8 +13,9 @@ public class TeleopControllerTest {
     RobotState robotState = new RobotState();
     TeleopController teleopController = new TeleopController();
 
-    // Given that the driver is using the drive controls to move the robot forward at maximum speed
-    robotState.getControlsState().setForwardBackward(1.0);
+    // Given that the driver is using the drive controls to move the robot forward
+    // at maximum speed
+    robotState.getControlsState().setForwardBackwardAxis(1.0);
 
     // When I use the TeleopController to control the robot
     teleopController.control(robotState);
@@ -30,7 +32,7 @@ public class TeleopControllerTest {
     TeleopController teleopController = new TeleopController();
 
     // Given that the driver has moved the forward/backward control half way forward
-    robotState.getControlsState().setForwardBackward(0.5);
+    robotState.getControlsState().setForwardBackwardAxis(0.5);
 
     // When I use the TeleopController to control the robot
     teleopController.control(robotState);
@@ -46,8 +48,9 @@ public class TeleopControllerTest {
     RobotState robotState = new RobotState();
     TeleopController teleopController = new TeleopController();
 
-    // Given that the driver has moved the forward/backward control all the way in the negative position
-    robotState.getControlsState().setForwardBackward(-1);
+    // Given that the driver has moved the forward/backward control all the way in
+    // the negative position
+    robotState.getControlsState().setForwardBackwardAxis(-1);
 
     // When I use the TeleopController to control the robot
     teleopController.control(robotState);
