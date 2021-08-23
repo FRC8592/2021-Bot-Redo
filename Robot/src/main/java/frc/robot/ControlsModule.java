@@ -90,7 +90,12 @@ public class ControlsModule {
         state.setCollectorUp(getButton(COLLECT_UP_BUTTON));
         state.setCollectorUnjam(getButton(COLLECT_UNJAM_BUTTON));
 
-        // Turret controls
+        state.setFlywheelStartButton(getButton(FLYWHEEL_START_BUTTON));
+        state.setFlywheelStopButton(getButton(FLYWHEEL_STOP_BUTTON));
+        state.setFlywheelSpeedAxis(getAxis(FLYWHEEL_SPEED_AXIS));
+        state.setLaunchButton(getButton(LAUNCH_BUTTON));
+        state.setTurretUnjamButton(getButton(TURRET_UNJAM_BUTTON));
+        state.setTurretAxis(getAxis(TURRET_AXIS));
 
         return state;
     }
