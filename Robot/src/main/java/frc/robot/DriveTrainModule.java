@@ -33,8 +33,8 @@ public class DriveTrainModule {
 	 * Read the current state from the hardware, like the current speed. This
 	 * information will be used by the controller.
 	 */
-	public DriveTrainState readState() {
-		return new DriveTrainState();
+	public void readState(DriveTrainState state) {
+		// Do nothing. This is a write-only module.
 	}
 
 	/**

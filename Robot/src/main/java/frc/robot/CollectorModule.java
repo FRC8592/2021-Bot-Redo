@@ -86,8 +86,11 @@ public class CollectorModule {
 
     }
 
-    public CollectorState readState() {
-        return null;
+    /**
+     * Read state into an existing variable to reduce object churn
+     */
+    public void readState(CollectorState state) {
+        // Do nothing. This module is write-only.
     }
 
 }

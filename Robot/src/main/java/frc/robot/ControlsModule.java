@@ -74,8 +74,7 @@ public class ControlsModule {
      * have to evaluate from the hardware that could change multiple times during
      * the cycle and the algorithm will be harder to write.
      */
-    public ControlsState readState() {
-        ControlsState state = new ControlsState();
+    public ControlsState readState(ControlsState state) {
 
         // Drive train controls
         state.setForwardBackwardAxis(getAxis(FORWARD_REV_AXIS));

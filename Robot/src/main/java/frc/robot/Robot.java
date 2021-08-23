@@ -57,13 +57,8 @@ public class Robot extends TimedRobot {
 
     // Read the initial state of each relevant module, i.e. get data from the
     // sensors.
-    // TODO: if needed for performance, reduce object churn by passing objects to
-    // readState()
     RobotState robotState = new RobotState();
-    robotState.setCollectorState(collectorModule.readState());
-    robotState.setControlsState(driveControlsModule.readState());
-    robotState.setDriveTrainState(driveTrainModule.readState());
-    robotState.setTurretState(turretModule.readState());
+    readModuleStates(robotState);
 
     // Use the logic in the controller to determine what the new state should be for
     // each module.
@@ -71,13 +66,24 @@ public class Robot extends TimedRobot {
 
     // Write the new state of each module, i.e. actually send signals to the
     // hardware.
+    writeModuleStates(robotState);
+
+    // Send telemetry.
+    this.telemetry.send(robotState.getTelemetrySources());
+  }
+
+  private void readModuleStates(RobotState robotState) {
+    collectorModule.readState(robotState.getCollectorState());
+    driveControlsModule.readState(robotState.getControlsState());
+    driveTrainModule.readState(robotState.getDriveTrainState());
+    turretModule.readState(robotState.getTurretState());
+  }
+
+  private void writeModuleStates(RobotState robotState) {
     this.collectorModule.writeState(robotState.getCollectorState());
     this.driveControlsModule.writeState(robotState.getControlsState());
     this.driveTrainModule.writeState(robotState.getDriveTrainState());
     this.turretModule.writeState(robotState.getTurretState());
-
-    // Send telemetry.
-    this.telemetry.send(robotState.getTelemetrySources());
   }
 
   /** This function is called once when the robot is disabled. */

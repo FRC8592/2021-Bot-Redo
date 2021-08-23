@@ -43,8 +43,8 @@ public class TurretModule {
         ballTrigger.set(ControlMode.PercentOutput, 0);
     }
 
-    public TurretState readState() {
-        return null;
+    public void readState(TurretState state) {
+        // Do nothing. This is a write-only module.
     }
 
     public void writeState(TurretState state) {
