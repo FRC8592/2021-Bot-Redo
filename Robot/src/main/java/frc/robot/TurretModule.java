@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-// Manage the robot turret
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
 package frc.robot;
 
 // Motor control classes
@@ -10,6 +6,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj.Encoder;
 
+/**
+ * Manages the turret of the robot
+ */
 public class TurretModule {
 
     // Turret control motors
