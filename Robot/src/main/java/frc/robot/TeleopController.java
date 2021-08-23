@@ -14,7 +14,7 @@ public class TeleopController {
         // Control the robot by reading some state values, applying some logic to them,
         // and setting other state values.
 
-        ControlsState driveControlsState = robotState.getDriveControlsState();
+        ControlsState driveControlsState = robotState.getControlsState();
         DriveTrainState driveTrainState = robotState.getDriveTrainState();
         TurretState turretModuleState = robotState.getTurretModuleState();
         CollectorState collectorModuleState = robotState.getCollectorModuleState();
@@ -40,13 +40,13 @@ public class TeleopController {
         driveTrainState.setDesiredRotation(desiredRotation);
     }
 
-    private void controlCollector(ControlsState driveControlsState, CollectorState collectorModuleState) {
-        collectorModuleState.setDeploying(driveControlsState.getCollectorDown());
-        collectorModuleState.setUneploying(driveControlsState.getCollectorUp());
-        collectorModuleState.setUnjamming(driveControlsState.getCollectorUnjam());
+    private void controlCollector(ControlsState controlsState, CollectorState collectorState) {
+        collectorState.setDeploying(controlsState.getCollectorDown());
+        collectorState.setUndeploying(controlsState.getCollectorUp());
+        collectorState.setUnjamming(controlsState.getCollectorUnjam());
     }
 
-    private void controlTurret(ControlsState driveControlsState, TurretState turretModuleState) {
+    private void controlTurret(ControlsState controlsState, TurretState turretState) {
     }
 
 }

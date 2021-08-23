@@ -64,12 +64,12 @@ public class Robot extends TimedRobot {
 
       // Write the new state of each module, i.e. actually send signals to the hardware.
       this.collectorModule.writeState(robotState.getCollectorModuleState());
-      this.driveControlsModule.writeState(robotState.getDriveControlsState());
+      this.driveControlsModule.writeState(robotState.getControlsState());
       this.driveTrainModule.writeState(robotState.getDriveTrainState());
       this.turretModule.writeState(robotState.getTurretModuleState());
 
       // Send telemetry.
-      this.telemetry.send(robotState.getDriveControlsState(), robotState.getDriveTrainState());
+      this.telemetry.send(robotState.getControlsState(), robotState.getDriveTrainState());
   }
 
   /** This function is called once when the robot is disabled. */

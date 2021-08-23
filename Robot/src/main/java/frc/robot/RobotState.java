@@ -2,10 +2,10 @@ package frc.robot;
 
 public class RobotState {
     
-    private DriveTrainState driveTrainState;
-    private ControlsState driveControlsState;
-    private TurretState turretModuleState;
-    private CollectorState collectorModuleState;
+    private DriveTrainState driveTrainState = new DriveTrainState();
+    private ControlsState driveControlsState = new ControlsState();
+    private TurretState turretModuleState = new TurretState();
+    private CollectorState collectorModuleState = new CollectorState();
 
     public DriveTrainState getDriveTrainState() {
         return driveTrainState;
@@ -15,7 +15,7 @@ public class RobotState {
         this.driveTrainState = driveTrainState;
     }
 
-    public ControlsState getDriveControlsState() {
+    public ControlsState getControlsState() {
         return driveControlsState;
     }
 

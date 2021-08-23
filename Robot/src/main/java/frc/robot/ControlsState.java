@@ -53,7 +53,7 @@ public class ControlsState implements TelemetrySource {
         return data;
     }
 
-    public boolean isCollectorUp() {
+    public boolean getCollectorUp() {
         return collectorUp;
     }
 
@@ -61,7 +61,7 @@ public class ControlsState implements TelemetrySource {
         this.collectorUp = collectorUp;
     }
 
-    public boolean isCollectorDown() {
+    public boolean getCollectorDown() {
         return collectorDown;
     }
 
@@ -69,7 +69,7 @@ public class ControlsState implements TelemetrySource {
         this.collectorDown = collectorDown;
     }
 
-    public boolean isCollectorUnjam() {
+    public boolean getCollectorUnjam() {
         return collectorUnjam;
     }
 
