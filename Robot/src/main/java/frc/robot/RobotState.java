@@ -6,6 +6,11 @@ public class RobotState {
     private ControlsState controlsState = new ControlsState();
     private DriveTrainState driveTrainState = new DriveTrainState();
     private TurretState turretState = new TurretState();
+    TelemetrySource[] telemetrySources = { collectorState, controlsState, driveTrainState, turretState };
+
+    public TelemetrySource[] getTelemetrySources() {
+        return telemetrySources;
+    }
 
     public CollectorState getCollectorState() {
         return collectorState;

@@ -12,24 +12,8 @@ import java.util.Map;
  */
 public class DriveTrainState implements TelemetrySource {
 
-    private double m_desiredRotation = 0;
-    private double m_desiredSpeed = 0;
-
-    public double getDesiredRotation() {
-        return m_desiredRotation;
-    }
-
-    public void setDesiredRotation(double desiredRotation) {
-        m_desiredRotation = desiredRotation;
-    }
-
-    public double getDesiredSpeed() {
-        return m_desiredSpeed;
-    }
-
-    public void setDesiredSpeed(double desiredSpeed) {
-        m_desiredSpeed = desiredSpeed;
-    }
+    private double desiredRotation = 0;
+    private double desiredSpeed = 0;
 
     @Override
     public Map<String, Double> getTelemetryData() {
@@ -40,5 +24,21 @@ public class DriveTrainState implements TelemetrySource {
         data.put("getDesiredSpeed", getDesiredSpeed());
 
         return data;
+    }
+
+    public double getDesiredRotation() {
+        return desiredRotation;
+    }
+
+    public void setDesiredRotation(double desiredRotation) {
+        this.desiredRotation = desiredRotation;
+    }
+
+    public double getDesiredSpeed() {
+        return desiredSpeed;
+    }
+
+    public void setDesiredSpeed(double desiredSpeed) {
+        this.desiredSpeed = desiredSpeed;
     }
 }

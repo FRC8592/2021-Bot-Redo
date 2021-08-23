@@ -17,7 +17,7 @@ public class Telemetry {
         }
     }
 
-    private void sendFromSource(TelemetrySource source) {
+    public void sendFromSource(TelemetrySource source) {
 
         // Get the data from the source and send each data item
         Map<String, Double> data = source.getTelemetryData();

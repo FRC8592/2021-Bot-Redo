@@ -77,7 +77,7 @@ public class Robot extends TimedRobot {
     this.turretModule.writeState(robotState.getTurretState());
 
     // Send telemetry.
-    this.telemetry.send(robotState.getControlsState(), robotState.getDriveTrainState());
+    this.telemetry.send(robotState.getTelemetrySources());
   }
 
   /** This function is called once when the robot is disabled. */

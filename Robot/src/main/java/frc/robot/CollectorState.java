@@ -1,11 +1,26 @@
 package frc.robot;
 
-public class CollectorState {
+import java.util.HashMap;
+import java.util.Map;
+
+public class CollectorState implements TelemetrySource {
 
     private boolean isDeploying;
     private boolean isUndeploying;
     private boolean isUnjamming;
 
+    @Override
+    public Map<String, Double> getTelemetryData() {
+        Map<String, Double> data = new HashMap<String, Double>();
+
+        // Add all of the data represented by this class to the Map
+        data.put("isDeploying", isDeploying() ? 1.0 : 0.0);
+        data.put("isUndeploying", isUndeploying() ? 1.0 : 0.0);
+        data.put("isUnjamming", isUnjamming() ? 1.0 : 0.0);
+
+        return data;
+    }
+    
     public boolean isDeploying() {
         return isDeploying;
     }
