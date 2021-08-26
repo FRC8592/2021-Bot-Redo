@@ -7,11 +7,11 @@ public class HardwareConstants implements Module{
 
         /* hardware Module is acting a header or reference everything is public in this file I know this is not normal but all we are doing is assigning constants and pinouts
         everything is also public static as this will save time later on this module should only hold hardware constants. 
-        start list here and PLEASE USE MEANINGFULL NAMES!!!!! if you don't this is unusable*/
+        start list here and PLEASE USE MEANINGFULL NAMES!!!!! if you don't this is unusable these are sometimes written in all caps*/
         public static final Double driveJoystickPort = 0;
 
-        @Override int update(){
-            return 1;
+        @Override void update(){
+
         }
         //** important info like ports or states to this*/
         @Override Map<String, Double> getState(){
