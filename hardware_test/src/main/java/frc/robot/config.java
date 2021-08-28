@@ -4,7 +4,7 @@ public class config {
     // Turret parameters
     public static final double ballTriggerPower  = 0.4;
     public static final double ballProcessPower  = 1.0;
-    public static final double ballFlywheelPower = 0.5
+    public static final double ballFlywheelPower = 0.5;
     public static final double TURRET_SCALE      = 0.5;
 
     // Drive parameters

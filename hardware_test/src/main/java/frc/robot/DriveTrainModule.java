@@ -57,8 +57,8 @@ public class DriveTrainModule {
 	//
 	public void DriveTrainModulePeriodic() {
 		// Read joystick values
-		double forwardRev = myControllers.getAxis(robotControls.forwardRevAxis) * DRIVE_POWER;
-		double turn       = myControllers.getAxis(robotControls.turnAxis) * TURN_POWER;
+		double forwardRev = myControllers.getAxis(robotControls.forwardRevAxis) * config.DRIVE_POWER;
+		double turn       = myControllers.getAxis(robotControls.turnAxis) * config.TURN_POWER;
 
 		// // Apply expo to controls.  Maintain negative values.
 		// if (forwardRev < 0.0) {
