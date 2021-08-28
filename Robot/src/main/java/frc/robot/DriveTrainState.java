@@ -12,33 +12,34 @@ import java.util.Map;
  */
 public class DriveTrainState implements TelemetrySource {
 
-    private double m_desiredRotation = 0;
-    private double m_desiredSpeed = 0;
-
-    public double getDesiredRotation() {
-        return m_desiredRotation;
-    }
-
-    public void setDesiredRotation(double desiredRotation) {
-        m_desiredRotation = desiredRotation;
-    }
-
-    public double getDesiredSpeed() {
-        return m_desiredSpeed;
-    }
-
-    public void setDesiredSpeed(double desiredSpeed) {
-        m_desiredSpeed = desiredSpeed;
-    }
+    private double driveRotation = 0;
+    private double driveSpeed = 0;
 
     @Override
     public Map<String, Double> getTelemetryData() {
         Map<String, Double> data = new HashMap<String, Double>();
 
         // Add all of the data represented by this class to the Map
-        data.put("getDesiredRotation", getDesiredRotation());
-        data.put("getDesiredSpeed", getDesiredSpeed()); 
+        data.put("driveRotation", driveRotation);
+        data.put("driveSpeed", driveSpeed);
 
         return data;
     }
+
+    public double getDriveRotation() {
+        return driveRotation;
+    }
+
+    public void setDriveRotation(double driveRotation) {
+        this.driveRotation = driveRotation;
+    }
+
+    public double getDriveSpeed() {
+        return driveSpeed;
+    }
+
+    public void setDriveSpeed(double driveSpeed) {
+        this.driveSpeed = driveSpeed;
+    }
+
 }
