@@ -71,7 +71,7 @@ public class turret {
         }
         
         SmartDashboard.putNumber("Flywheel", flywheelSpeed);
-        turretLaunch.set(ControlMode.PercentOutput, flywheelSpeed);
+        turretLaunch.set(ControlMode.PercentOutput, flywheelSpeed * ballFlywheelPower);
     
         // Engage the ball feed mechanism.  Unjam always has priority
         if (myControllers.getButton(robotControls.turretUnjamButton)) {
