@@ -46,5 +46,17 @@ public class DriveTrainModule {
 		double desiredRotation = driveTrainState.getDesiredRotation();
     robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
 	}
+
+	public double getVelocity(){
+		double totalVelocity = leftFront.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity += 1 * rightFront.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity += leftBack.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity += 1 * rightBack.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity /= 4.0;
+		totalVelocity = (((totalVelocity * ((2 * Math.PI) / 2048.0) * 3) / .1) / 10.75);
+
+		//this function will return the velocity of the robot (in meters i hope)
+		return totalVelocity;
+	}
     
 }
