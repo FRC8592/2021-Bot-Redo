@@ -42,20 +42,20 @@ public class DriveTrainModule {
 	 * The vendor APIs for the hardware will not let us update some values, like current speed.
 	 */
 	public void writeState(DriveTrainState driveTrainState) {
-		double desiredSpeed = driveTrainState.getDesiredSpeed();
-		double desiredRotation = driveTrainState.getDesiredRotation();
+		double desiredSpeed = driveTrainState.getDriveSpeed();
+		double desiredRotation = driveTrainState.getDriveRotation();
     robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
 	}
 
 	public double getVelocity(){
 		double totalVelocity = leftFront.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity += 1 * rightFront.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity += -1 * rightFront.getSensorCollection().getIntegratedSensorVelocity();
 		totalVelocity += leftBack.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity += 1 * rightBack.getSensorCollection().getIntegratedSensorVelocity();
+		totalVelocity += -1 * rightBack.getSensorCollection().getIntegratedSensorVelocity();
 		totalVelocity /= 4.0;
 		totalVelocity = (((totalVelocity * ((2 * Math.PI) / 2048.0) * 3) / .1) / 10.75);
 
-		//this function will return the velocity of the robot (in meters i hope)
+		//this function will return the velocity of the robot (in meters i hope) -Zolton
 		return totalVelocity;
 	}
     

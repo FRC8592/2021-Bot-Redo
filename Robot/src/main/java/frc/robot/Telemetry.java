@@ -4,24 +4,24 @@ import java.util.Map;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Sends telemetry data to some display or collection device like
- * SmartDashboard and/or a USB storage device that lives on the robot.
+ * Sends telemetry data to some display or collection device like SmartDashboard
+ * and/or a USB storage device that lives on the robot.
  */
 public class Telemetry {
-    
+
     public void send(TelemetrySource... sources) {
 
         // Loop through the sources, sending the data from each one
-        for(TelemetrySource source : sources) {
+        for (TelemetrySource source : sources) {
             sendFromSource(source);
         }
     }
 
-    private void sendFromSource(TelemetrySource source) {
+    public void sendFromSource(TelemetrySource source) {
 
         // Get the data from the source and send each data item
         Map<String, Double> data = source.getTelemetryData();
-        for(Map.Entry<String, Double> dataItem : data.entrySet()) {
+        for (Map.Entry<String, Double> dataItem : data.entrySet()) {
             sendDataItem(dataItem);
         }
     }
