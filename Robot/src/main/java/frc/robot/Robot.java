@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
   private void readModuleStates(RobotState robotState) {
     collectorModule.readState(robotState.getCollectorState());
     driveControlsModule.readState(robotState.getControlsState());
-    driveTrainModule.readState(robotState.getDriveTrainState());
+    //driveTrainModule.readState(robotState.getDriveTrainState());
     turretModule.readState(robotState.getTurretState());
   }
 

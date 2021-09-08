@@ -33,8 +33,8 @@ public class DriveTrainModule {
 	 * Read the current state from the hardware, like the current speed. This information
 	 * will be used by the controller.
 	 */
-	public DriveTrainState readState() {
-		return new DriveTrainState();
+	public void readState() {
+		
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class DriveTrainModule {
 	public void writeState(DriveTrainState driveTrainState) {
 		double desiredSpeed = driveTrainState.getDriveSpeed();
 		double desiredRotation = driveTrainState.getDriveRotation();
-    robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
+    	robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
 	}
 
 	public double getVelocity(){
