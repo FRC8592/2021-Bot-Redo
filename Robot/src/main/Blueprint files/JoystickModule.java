@@ -23,21 +23,23 @@ public class JoystickModule implements RobotModule{
     public JoystickModule(){
         this.driveStick = new Joystick(HardwareConstants.DRIVE_STICK);
         this.turretStick = new Joystick(HardwareConstants.TURRET_STICK);
+       
     }
 
-     public BasicMovement(){
+     public void updateBasicMovement(){
         this.forwardAxis = driveStick.getRawAxis(HardwareConstants.FORWARD_AXIS);
         this.turnAxis = driveStick.getRawAxis(HardwareConstants.TURN_AXIS);
+       
      }
 
-     public CollectorControls(){
+     public void updateCollectorControls(){
         this.collectorIntake = driveStick.getRawButton(HardwareConstants.COLLECTOR_INTAKE);
         this.collectorUp = driveStick.getRawButton(HardwareConstants.COLLECTOR_UP);
         this.collectorDown = driveStick.getRawButton(HardwareConstants.COLLECTOR_DOWN);
         this.collectorUnjam = driveStick.getRawButton(HardwareConstants.COLLECTOR_UNJAM);
      }
 
-     public TurretControls(){
+     public void updateTurretControls(){
         this.turretLaunch = turretStick.getRawButton(HardwareConstants.TURRET_LAUNCH);
         this.turretSpeedControl = turretStick.getRawAxis(HardwareConstants.FLYWHEEL_SPEED_CONTROL);
         this.stageTwoCollection = turretStick.getRawButton(HardwareConstants.STAGE_2_COLLECTION);
@@ -49,6 +51,14 @@ public class JoystickModule implements RobotModule{
      * with the exception of the getState method below. update will be called once per module by teleop Periodic
      */
     public void update(){
+      if(this.driveStick != null && this.driveStick != null){
+         updateBasicMovement();
+         updateCollectorControls();
+         updateTurretControls();
+      }
+    }
+    public boolean getCollectorIntake(){
+         return this.collectorIntake;
     }
 
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function
