@@ -64,5 +64,6 @@ public class JoystickModule implements RobotModule{
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function
     called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
     public Map<String, Double> getState(){
+         Map joystickMap = new HashMap()
     }
 }
