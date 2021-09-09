@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class InputModule implements RobotModule {
 
      private JoystickModule joystickModule;
@@ -11,9 +12,10 @@ public class InputModule implements RobotModule {
      */
     public InputModule(){
         joystickModule = new JoystickModule();
+    
     }
     public void update(){
-
+            joystickModule.update();
     }
 
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function

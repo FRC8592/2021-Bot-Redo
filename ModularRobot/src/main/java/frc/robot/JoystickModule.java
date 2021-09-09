@@ -1,4 +1,4 @@
-import edu.wpi.first.wpilibj.Joystick;
+import edu..first.wpilibj.Joystick;
 import frc.robot.HardwareIds;
 /**
  * @author Alex Shcherbina
