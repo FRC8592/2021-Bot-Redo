@@ -1,3 +1,5 @@
+package frc.robot;
+
 import java.util.Map;
 /***
  *  Authors: Coach Sam, Coach Dillon, Coach Max
@@ -11,13 +13,13 @@ public abstract class ControlModule implements RobotModule{
     */
 
     private InputModule  inputs;        //object holding Robot's Sensors
-    private OutputModule hardwareOutputs;  //Object holding outputs like motor controllers, servos, blinking lights etc.
+    private OutputModule outputs;  //Object holding outputs like motor controllers, servos, blinking lights etc.
     /*** 
      * This is the Defualt constructor set initial values of any private variables here
      * You want to overide this method for ControlModules you might create.
      */
-    public ControlModule(SensorModule inputs, OutputModue outputs){
-            this.inputs = sensors;   //I have set the sensors object reference to sensors once created this "Should be pass by reference"
+    public ControlModule(InputModule inputs, OutputModule outputs){
+            this.inputs = inputs;   //I have set the sensors object reference to sensors once created this "Should be pass by reference"
             this.outputs = outputs;   //I have set the output once created reference to sensors once created this "Should be pass by reference"
     }
      /*** This is the entry point int module use this module to read data from sensors or make calculations, or output commands 
@@ -28,6 +30,6 @@ public abstract class ControlModule implements RobotModule{
 
     /** Coach Dillan recomends state Obects and hashmaps and I agree With him states and hashmaps are useful this will be the function
      called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
-    public abstract Map<String, Object> getState();
+    public abstract Map<String, Double> getState();
 
 }

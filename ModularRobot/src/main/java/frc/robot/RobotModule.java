@@ -1,3 +1,7 @@
+package frc.robot;
+
+import java.util.Map;
+
 /***
  * This an interface for a RobotModule provided to you for the creation of a module 
  * this will help you format your robot code into into input modules, control modules, hardware modules

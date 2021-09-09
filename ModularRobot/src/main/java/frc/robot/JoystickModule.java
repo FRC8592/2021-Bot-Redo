@@ -1,5 +1,10 @@
-import edu..first.wpilibj.Joystick;
-import frc.robot.HardwareIds;
+package frc.robot;
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+import edu.wpi.first.wpilibj.Joystick;
 /**
  * @author Alex Shcherbina
  * Joystick input module
@@ -74,11 +79,11 @@ public class JoystickModule implements RobotModule{
       return this.collectorUnjam;
     }
 
-    public boolean getForwardAxis(){
+    public double getForwardAxis(){
       return this.forwardAxis;
     }
 
-    public boolean getTurnAxis(){
+    public double getTurnAxis(){
       return this.turnAxis;
     }
 
@@ -97,16 +102,16 @@ public class JoystickModule implements RobotModule{
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function
     called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
     public Map<String, Double> getState(){
-         Map<K,V> joystickMap = new HashMap<String, Double>();
-         joystickMap.put("Joystick driveStick", this.driveStick);
-         joystickMap.put("Joystick turretStick", this.turretStick);
+         HashMap<String, Double> joystickMap = new HashMap<String, Double>();
+         joystickMap.put("Joystick driveStick", HardwareConstants.DRIVE_STICK + 0.0);
+         joystickMap.put("Joystick turretStick", HardwareConstants.TURRET_STICK + 0.0);
          joystickMap.put("Joystick ForwardAxis", this.forwardAxis);
          joystickMap.put("Joystick TurnAxis", this.turnAxis);
-         joystickMap.put("JoyStick collectorIntake", this.collectorIntake? 1:0);
-         joystickMap.put("JoyStick collectorDown", this.collectorDown? 1:0);
-         joystickMap.put("JoyStick collectorUnjam", this.collectorUnjam? 1:0);
-         joystickMap.put("JoyStick turretLaunch", this.turretLaunch? 1:0);
-         JoystickMap.put("JoyStick stageTwoCollection", this.stageTwoCollection? 1:0);
+         joystickMap.put("JoyStick collectorIntake", this.collectorIntake? 1.0:0.0);
+         joystickMap.put("JoyStick collectorDown", this.collectorDown? 1.0:0.0);
+         joystickMap.put("JoyStick collectorUnjam", this.collectorUnjam? 1.0:0.0);
+         joystickMap.put("JoyStick turretLaunch", this.turretLaunch? 1.0:0.0);
+         joystickMap.put("JoyStick stageTwoCollection", this.stageTwoCollection? 1.0:0.0);
          joystickMap.put("JoyStick turretSpeedControl", this.turretSpeedControl);
        return joystickMap;
   }

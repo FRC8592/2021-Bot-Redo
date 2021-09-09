@@ -1,3 +1,5 @@
+package frc.robot;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,7 @@ public class InputModule implements RobotModule {
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function
     called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
     public Map<String, Double> getState(){
-        Map<K,V> inputMap = new HashMap<String, Double>();
+        Map<String,Double> inputMap = new HashMap<String, Double>();
         inputMap.putAll(joystickModule.getState());
 
         return inputMap;
