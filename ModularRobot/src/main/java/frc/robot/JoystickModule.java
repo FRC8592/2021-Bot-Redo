@@ -26,28 +26,28 @@ public class JoystickModule implements RobotModule{
     private double turretSpeedControl;
 
     public JoystickModule(){
-        this.driveStick = new Joystick(HardwareConstants.DRIVE_STICK);
-        this.turretStick = new Joystick(HardwareConstants.TURRET_STICK);
+        this.driveStick = new Joystick(HardwareConstants.JOYSTICK.DRIVE_STICK);
+        this.turretStick = new Joystick(HardwareConstants.JOYSTICK.TURRET_STICK);
        
     }
 
      public void updateBasicMovement(){
-        this.forwardAxis = driveStick.getRawAxis(HardwareConstants.FORWARD_AXIS);
-        this.turnAxis = driveStick.getRawAxis(HardwareConstants.TURN_AXIS);
+        this.forwardAxis = driveStick.getRawAxis(HardwareConstants.JOYSTICK.FORWARD_AXIS);
+        this.turnAxis = driveStick.getRawAxis(HardwareConstants.JOYSTICK.TURN_AXIS);
        
      }
 
      public void updateCollectorControls(){
-        this.collectorIntake = driveStick.getRawButton(HardwareConstants.COLLECTOR_INTAKE);
-        this.collectorUp = driveStick.getRawButton(HardwareConstants.COLLECTOR_UP);
-        this.collectorDown = driveStick.getRawButton(HardwareConstants.COLLECTOR_DOWN);
-        this.collectorUnjam = driveStick.getRawButton(HardwareConstants.COLLECTOR_UNJAM);
+        this.collectorIntake = driveStick.getRawButton(HardwareConstants.JOYSTICK.COLLECTOR_INTAKE);
+        this.collectorUp = driveStick.getRawButton(HardwareConstants.JOYSTICK.COLLECTOR_UP);
+        this.collectorDown = driveStick.getRawButton(HardwareConstants.JOYSTICK.COLLECTOR_DOWN);
+        this.collectorUnjam = driveStick.getRawButton(HardwareConstants.JOYSTICK.COLLECTOR_UNJAM);
      }
 
      public void updateTurretControls(){
-        this.turretLaunch = turretStick.getRawButton(HardwareConstants.TURRET_LAUNCH);
-        this.turretSpeedControl = turretStick.getRawAxis(HardwareConstants.FLYWHEEL_SPEED_CONTROL);
-        this.stageTwoCollection = turretStick.getRawButton(HardwareConstants.STAGE_2_COLLECTION);
+        this.turretLaunch = turretStick.getRawButton(HardwareConstants.JOYSTICK.TURRET_LAUNCH);
+        this.turretSpeedControl = turretStick.getRawAxis(HardwareConstants.JOYSTICK.FLYWHEEL_SPEED_CONTROL);
+        this.stageTwoCollection = turretStick.getRawButton(HardwareConstants.JOYSTICK.STAGE_2_COLLECTION);
      }
     
 
@@ -68,7 +68,7 @@ public class JoystickModule implements RobotModule{
     }
 
     public boolean getCollectorUp(){
-         return this.collectorUp;
+         return this.collectorUp;  
     }
 
     public boolean getCollectorDown(){
@@ -103,8 +103,8 @@ public class JoystickModule implements RobotModule{
     called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
     public Map<String, Double> getState(){
          HashMap<String, Double> joystickMap = new HashMap<String, Double>();
-         joystickMap.put("Joystick driveStick", HardwareConstants.DRIVE_STICK + 0.0);
-         joystickMap.put("Joystick turretStick", HardwareConstants.TURRET_STICK + 0.0);
+         joystickMap.put("Joystick driveStick", HardwareConstants.JOYSTICK.DRIVE_STICK + 0.0);
+         joystickMap.put("Joystick turretStick", HardwareConstants.JOYSTICK.TURRET_STICK + 0.0);
          joystickMap.put("Joystick ForwardAxis", this.forwardAxis);
          joystickMap.put("Joystick TurnAxis", this.turnAxis);
          joystickMap.put("JoyStick collectorIntake", this.collectorIntake? 1.0:0.0);
