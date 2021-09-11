@@ -19,6 +19,7 @@ public class InputModule implements RobotModule {
     }
     public void update(){
             joystickModule.update();
+            driveTrainSensorModule.update();
     }
 
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function

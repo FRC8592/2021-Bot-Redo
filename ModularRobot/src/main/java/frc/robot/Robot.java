@@ -21,6 +21,7 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   private InputModule inputModule;
   private ModuleRunner runner;
+  private OutputModule outputModule;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -34,7 +35,8 @@ public class Robot extends TimedRobot {
     this.inputModule = new InputModule();
     this.runner = new ModuleRunner();
     this.runner.addModule(inputModule);
-    
+    this.outputModule = new OutputModule();
+    this.runner.addModule(outputModule);
     
   }
 

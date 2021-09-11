@@ -14,7 +14,7 @@ public class OutputModule implements RobotModule{
 
     //initialize all hardware in constructor;
     public OutputModule(){
-        this.driveTrainModule = new DriveTrainSensorModule();
+        this.driveTrainModule = new DrivetrainModule();
     }
     //still including this incase you want to make changes to hardware like motor speed in the update frame
     @Override
@@ -24,7 +24,7 @@ public class OutputModule implements RobotModule{
     //Report values of each private Variable set by end of frame.
     public Map<String, Double> getState(){
         HashMap<String, Double> map = new HashMap<String, Double>();
-        map.putAll(driveTrainModule);
+        map.putAll(driveTrainModule.getState());
             return map;
     }
 
