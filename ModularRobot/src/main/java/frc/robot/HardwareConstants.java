@@ -12,6 +12,11 @@ public class  HardwareConstants implements RobotModule{
     public static final double IN_TO_M = 0.0254;  
     public static final double FT_TO_M = 0.3048;
     public static final double DEG_TO_RAD = 0.0174533;
+    public static final double RAD_TO_DEG = 57.2958;
+
+    public static final double WHEEL_RADIUS_IN = 3;
+    public static final double WHEEL_BASE_IN = 22;
+
     public static class JOYSTICK {
     // JoyStick Constants
     public static final int DRIVE_STICK = 0;
