@@ -5,24 +5,41 @@ import java.util.Map;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  * @author Alex Shcherbina
  * Drivetrain module
  */
 public class DrivetrainModule implements RobotModule{
-    private TalonFX leftFront;
-    private TalonFX rightFront;
-    private TalonFX leftBack;
-    private TalonFX rightBack;
+    private WPI_TalonFX leftFront;
+    private WPI_TalonFX rightFront;
+    private WPI_TalonFX leftBack;
+    private WPI_TalonFX rightBack;
     private double leftPower;
     private double rightPower;
     private SpeedControllerGroup leftDrive; 
 	private SpeedControllerGroup rightDrive;
     private DifferentialDrive robotDrive; 
+    private double forwardOut;
+    private double turningOut;
 
+
+    public void setForwardOut(double forwardOut){
+        this.forwardOut = forwardOut;
+    }
+    public void setTurningOut(double turningOut){
+        this.turningOut = turningOut;
+    }
     public DrivetrainModule(){
-        this.leftDrive = = new SpeedControllerGroup(leftFront, leftBack);
-        this.rightDrive; = new SpeedControllerGroup(rightFront, rightBack);
+        this.leftFront = new WPI_TalonFX(HardwareConstants.CAN.LEFT_FRONT_WHEEL);
+        this.leftBack = new WPI_TalonFX(HardwareConstants.CAN.LEFT_BACK_WHEEL);
+        this.rightBack = new WPI_TalonFX(HardwareConstants.CAN.RIGHT_BACK_WHEEL);
+        this.rightFront = new WPI_TalonFX(HardwareConstants.CAN.RIGHT_FRONT_WHEEL);
+        this.leftDrive = new SpeedControllerGroup(leftFront, leftBack);
+        this.rightDrive = new SpeedControllerGroup(rightFront, rightBack);
         this.robotDrive = new DifferentialDrive(rightDrive, leftDrive);
     }
     public void updatePowerRightMotors(){
@@ -52,7 +69,7 @@ public class DrivetrainModule implements RobotModule{
         updateDifferentialDrive();
     }
     private void updateDifferentialDrive(){
-            robotDrive.arcadeDrive(rightPower, leftPower);
+            robotDrive.arcadeDrive(forwardOut, turningOut);
     }
 
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function

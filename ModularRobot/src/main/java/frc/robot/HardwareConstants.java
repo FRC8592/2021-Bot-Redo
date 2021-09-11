@@ -26,7 +26,7 @@ public class  HardwareConstants implements RobotModule{
     public static final int COLLECTOR_DOWN = 3;
     public static final int COLLECTOR_UNJAM = 4;
     public static final int TURN_AXIS = 2;
-    public static final int FORWARD_AXIS = 0;
+    public static final int FORWARD_AXIS = 1;
     public static final int FLYWHEEL_SPEED_CONTROL = 3;
     public static final int TURRET_LAUNCH = 6;
     public static final int STAGE_2_COLLECTION = 5;

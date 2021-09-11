@@ -19,7 +19,7 @@ public class OutputModule implements RobotModule{
     //still including this incase you want to make changes to hardware like motor speed in the update frame
     @Override
     public void update(){
-
+        driveTrainModule.update();
     }
     //Report values of each private Variable set by end of frame.
     public Map<String, Double> getState(){

@@ -1,5 +1,6 @@
 package frc.robot;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BasicTeleop extends ControlModule{
@@ -17,6 +18,8 @@ public class BasicTeleop extends ControlModule{
         // TODO Auto-generated method stub
         double forward = inputs.joystickModule.getForwardAxis();
         double turn = inputs.joystickModule.getTurnAxis();
+        outputs.driveTrainModule.setForwardOut(forward);
+        outputs.driveTrainModule.setTurningOut(turn);
 
         if(forward > -0.5 && forward < 0.5){
             forward = 0;
@@ -30,7 +33,7 @@ public class BasicTeleop extends ControlModule{
     @Override
     public Map<String, Double> getState() {
         // TODO Auto-generated method stub
-        return null;
+        return new  HashMap<String, Double>();
     }
     
 }

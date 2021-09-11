@@ -22,6 +22,7 @@ public class Robot extends TimedRobot {
   private InputModule inputModule;
   private ModuleRunner runner;
   private OutputModule outputModule;
+  private BasicTeleop teleopModule;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -34,8 +35,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     this.inputModule = new InputModule();
     this.runner = new ModuleRunner();
-    this.runner.addModule(inputModule);
     this.outputModule = new OutputModule();
+   
+    this.teleopModule = new BasicTeleop(inputModule, outputModule);
+    this.runner.addModule(inputModule);
+    this.runner.addModule(teleopModule);
     this.runner.addModule(outputModule);
     
   }
