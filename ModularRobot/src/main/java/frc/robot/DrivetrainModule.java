@@ -16,7 +16,15 @@ public class DrivetrainModule implements RobotModule{
     private TalonFX rightBack;
     private double leftPower;
     private double rightPower;
+    private SpeedControllerGroup leftDrive; 
+	private SpeedControllerGroup rightDrive;
+    private DifferentialDrive robotDrive; 
 
+    public DrivetrainModule(){
+        this.leftDrive = = new SpeedControllerGroup(leftFront, leftBack);
+        this.rightDrive; = new SpeedControllerGroup(rightFront, rightBack);
+        this.robotDrive = new DifferentialDrive(rightDrive, leftDrive);
+    }
     public void updatePowerRightMotors(){
         rightFront.set(ControlMode.PercentOutput, rightPower);
         rightBack.set(ControlMode.PercentOutput, rightPower);
@@ -39,10 +47,13 @@ public class DrivetrainModule implements RobotModule{
      * with the exception of the getState method below. update will be called once per module by teleop Periodic
      */
     public void update(){
-        updatePowerLeftMotors();
-        updatePowerRightMotors();
+        //updatePowerLeftMotors();
+        //updatePowerRightMotors();
+        updateDifferentialDrive();
     }
-
+    private void updateDifferentialDrive(){
+            robotDrive.arcadeDrive(rightPower, leftPower);
+    }
 
     /** Coach Dillan Recomends state Obects or hashmaps are usefull and Coach Sam agrees With him states and hashmaps are useful this will be the function
     called to get this map from your object by the telemetry module you need to implement this for every Module you create*/
