@@ -5,11 +5,16 @@ import java.util.Map;
 
 public class OutputModule implements RobotModule{
 
+
+    //public variables
+    public DrivetrainModule driveTrainModule;
+
     //Private Variables
+    
 
     //initialize all hardware in constructor;
     public OutputModule(){
-
+        this.driveTrainModule = new DriveTrainSensorModule();
     }
     //still including this incase you want to make changes to hardware like motor speed in the update frame
     @Override
@@ -19,6 +24,7 @@ public class OutputModule implements RobotModule{
     //Report values of each private Variable set by end of frame.
     public Map<String, Double> getState(){
         HashMap<String, Double> map = new HashMap<String, Double>();
+        map.putAll(driveTrainModule);
             return map;
     }
 
