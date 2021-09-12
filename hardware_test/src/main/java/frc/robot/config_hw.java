@@ -4,7 +4,13 @@
 
 package frc.robot;
 
+<<<<<<< HEAD
 public class config_hw {
+=======
+public final class config_hw {
+    private config_hw(){throw new UnsupportedOperationException();}
+
+>>>>>>> c257334faf76a783080ba850e81649d116bc6a83
     // Joystick USB IDs
     public static final int driverStickUSB = 0;
     public static final int turretStickUSB = 1;
@@ -26,5 +32,8 @@ public class config_hw {
     public static final int turretRotateCAN = 12;     // Control rotation of turret
     public static final int ballProcessCAN  = 13;     // Controls belt driving balls towards turret
     public static final int ballTriggerCAN  = 11;     // Feed balls to flywheel (5k RPM max!  Be careful!)
+<<<<<<< HEAD
 
+=======
+>>>>>>> c257334faf76a783080ba850e81649d116bc6a83
 }

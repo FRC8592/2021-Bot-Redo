@@ -57,6 +57,7 @@ public class DriveTrainModule {
 	//
 	public void DriveTrainModulePeriodic() {
 		// Read joystick values
+<<<<<<< HEAD
 		double forwardRev = myControllers.getAxis(robotControls.forwardRevAxis);
 		double turn       = myControllers.getAxis(robotControls.turnAxis) * 0.7;
 
@@ -72,6 +73,23 @@ public class DriveTrainModule {
 		} else {
 			turn = Math.pow(turn, config.TURN_EXPO);
 		}
+=======
+		double forwardRev = myControllers.getAxis(robotControls.forwardRevAxis) * config.DRIVE_POWER;
+		double turn       = myControllers.getAxis(robotControls.turnAxis) * config.TURN_POWER;
+
+		// // Apply expo to controls.  Maintain negative values.
+		// if (forwardRev < 0.0) {
+		// 	forwardRev = -Math.pow(forwardRev, config.FORWARD_EXPO);
+		// } else {
+		// 	forwardRev = Math.pow(forwardRev, config.FORWARD_EXPO);
+		// }
+
+		// if (turn < 0.0) {
+		// 	turn = -Math.pow(turn, config.TURN_EXPO);
+		// } else {
+		// 	turn = Math.pow(turn, config.TURN_EXPO);
+		// }
+>>>>>>> c257334faf76a783080ba850e81649d116bc6a83
 
 		// Send controls to the robot drive system
 		robotDrive.arcadeDrive(forwardRev, turn);

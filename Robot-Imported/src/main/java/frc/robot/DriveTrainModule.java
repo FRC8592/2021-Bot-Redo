@@ -33,13 +33,8 @@ public class DriveTrainModule {
 	 * Read the current state from the hardware, like the current speed. This
 	 * information will be used by the controller.
 	 */
-<<<<<<< HEAD
-	public void readState() {
-		
-=======
 	public void readState(DriveTrainState state) {
 		// Do nothing. This is a write-only module.
->>>>>>> c257334faf76a783080ba850e81649d116bc6a83
 	}
 
 	/**
@@ -50,23 +45,7 @@ public class DriveTrainModule {
 	public void writeState(DriveTrainState driveTrainState) {
 		double desiredSpeed = driveTrainState.getDriveSpeed();
 		double desiredRotation = driveTrainState.getDriveRotation();
-<<<<<<< HEAD
-    	robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
-	}
-
-	public double getVelocity(){
-		double totalVelocity = leftFront.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity += -1 * rightFront.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity += leftBack.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity += -1 * rightBack.getSensorCollection().getIntegratedSensorVelocity();
-		totalVelocity /= 4.0;
-		totalVelocity = (((totalVelocity * ((2 * Math.PI) / 2048.0) * 3) / .1) / 10.75);
-
-		//this function will return the velocity of the robot (in meters i hope) -Zolton
-		return totalVelocity;
-=======
 		robotDrive.arcadeDrive(desiredSpeed, desiredRotation);
->>>>>>> c257334faf76a783080ba850e81649d116bc6a83
 	}
 
 }
