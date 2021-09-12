@@ -59,6 +59,9 @@ public class turret {
         turretLaunch.configClosedloopRamp(config.SHOOT_RAMP_TIME);
 
         turretLaunch.set(ControlMode.Velocity, 0);  // Constant velocity mode at 0 rpm
+
+        // Set turret controls on Smart Dashboard
+        SmartDashboard.putNumber("Flywheel RPM", config.BALL_FLYWHEEL_RPM);
     }
 
 
@@ -66,28 +69,27 @@ public class turret {
     // Turret controls
     //
     public void turretPeriodic() {
-        double flywheelSpeed;
-        double turretRotation;
+        double flywheelSpeedSet  = 0;
+        double flywheelSpeedLast = 0;
+        double realFlywheelSpeed = 0.0;
+        double turretRotation    = 0.0;
 
         //
-        // Control the launch flywheel.
+        // Control the launch flywheel via smartDashboard
         //
-        // I used to transform the joystick throttle such that the range of (-1, 1) was mapped to (0,1).
-        // This made the bottom position of the throttle = 0 and allow us to use the whole range of
-        // motion to make adjustments.  However, this meant that when the joystick wasn't plugged in,
-        // the axis would default to a value of 0, which would be mapped to 0.5, causing the flywheel
-        // to spin.  This is annoying and possibly dangerous, so I now just use the (0, 1) portion of
-        // the throttle control and map any negative numbers to zero
+        // Only update the turret speed settings when the SmartDashboard value actually changes
         //
-        flywheelSpeed = myControllers.getAxis(robotControls.flywheelSpeedAxis);
-        if (flywheelSpeed  < 0) {
-            flywheelSpeed = 0;
+        flywheelSpeedSet = SmartDashboard.getNumber("Flywheel RPM", config.BALL_FLYWHEEL_RPM);
+
+        if (flywheelSpeedSet != flywheelSpeedLast) {
+            turretLaunch.set(ControlMode.Velocity, falconUtil.rpmToFalcon(flywheelSpeedSet));
+            flywheelSpeedLast = flywheelSpeedSet;
         }
-        
-        //SmartDashboard.putNumber("Flywheel", flywheelSpeed);
-        //turretLaunch.set(ControlMode.PercentOutput, flywheelSpeed * config.BALL_FLYWHEEL_POWER);
 
-        turretLaunch.set(ControlMode.Velocity, falconUtil.rpmToFalcon(config.BALL_FLYWHEEL_RPM));  // Constant velocity mode at 0 rpm5
+        // Read actual speed from the flywheel and display it
+        realFlywheelSpeed = turretLaunch.getSelectedSensorVelocity();
+        SmartDashboard.putNumber("Real Speed", realFlywheelSpeed);
+
     
         // Engage the ball feed mechanism.  Unjam always has priority
         if (myControllers.getButton(robotControls.turretUnjamButton)) {             // If unjam pressed, reverse trigger and process motors

@@ -9,16 +9,14 @@ public final class config {
     public static final double TURRET_SCALE        = 0.5;   // Scale joystick input for turret motion
 
     // Parameters for constant-speed flywheel control
-    public static final double BALL_FLYWHEEL_POWER = 0.5;
-    public static final int    BALL_FLYWHEEL_RPM   = 4000;
+    public static final double BALL_FLYWHEEL_RPM   = 1000;
     public static final double SHOOT_RAMP_TIME     = 4.0;   // Ramp time to full speed (seconds)
     public static final int    FLYWHEEL_PID_INDEX  = 0;     // Primary closed-loop PID index
     public static final int    SHOOT_SLOT_INDEX    = 0;     // PID parameter set for shooting
-    public static final double SHOOT_PID_P         = 0.22;   // PID and feed forward
+    public static final double SHOOT_PID_P         = 0.18;  // PID and feed forward
     public static final double SHOOT_PID_I         = 0.0;
-    public static final double SHOOT_PID_D         = 0.0;
-    public static final double SHOOT_PID_F         = 0.0;
- 
+    public static final double SHOOT_PID_D         = 0.01;
+    public static final double SHOOT_PID_F         = 0.046;
     // Drive parameters
     public static final double RAMP_TIME    = 0.5;      // Seconds
     public static final double FORWARD_EXPO = 2;

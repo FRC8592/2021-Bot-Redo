@@ -10,9 +10,8 @@ public final class falconUtil {
 
     // Convert RPM into the internal velocity units used for the Falcon 500
     // Maximum unloaded RPM is 6380, but we don't check for that
-    public static double rpmToFalcon(int rpm) {
-        return (double) rpm * FALCON_COUNTS_PER_REV / FALCON_CONVERSION_FACTOR;
+    public static double rpmToFalcon(double rpm) {
+        return rpm * FALCON_COUNTS_PER_REV / FALCON_CONVERSION_FACTOR;
     }
 
-    
 }
