@@ -29,7 +29,9 @@ public class ControlGame extends JoystickModule {
 
     private double triggerL;
     private double triggerR;
+
     private double turningForce;
+    private double driveForce;
 
     public ControlGame(){
         this.driveStick = new Joystick(HardwareConstants.JOYSTICK.DRIVE_STICK);
@@ -37,20 +39,23 @@ public class ControlGame extends JoystickModule {
     }
 
     public void updateBasicMovement() {
-        this.forwardAxis = driveStick.getRawAxis(HardwareConstants.JOYSTICK.FORWARD_AXIS_G); //had to add new harwareconstants
-        this.turnAxis=driveStick.getRawAxis(HardwareConstants.JOYSTICK.TURN_AXIS_G);
+        //had to add new harwareconstants
+        //this.forwardAxis = driveStick.getRawAxis(HardwareConstants.JOYSTICK.FORWARD_AXIS_G); //this is unused here
+        this.turnAxis=driveStick.getRawAxis(HardwareConstants.JOYSTICK.TURN_AXIS_GM);
         this.triggerL=driveStick.getRawAxis(HardwareConstants.JOYSTICK.LEFT_TRIGGER_PULL);
         this.triggerR=driveStick.getRawAxis(HardwareConstants.JOYSTICK.RIGHT_TRIGGER_PULL);
-        getTurningForce();
+        this.forwardAxis = getdriveForce() / 0.70; //added a power mulltiplier
+        this.turnAxis = getTurningForce() *0.70;
         // I cant find where this is being written to the robot or called by any class in general -Zolton
     }
 
+    public double getdriveForce(){
+        this.driveForce = (-1.0*triggerR) + triggerL;
+        return driveForce;
+    }
 
     public double getTurningForce() {
-        this.turningForce = (-1.0*triggerL) + triggerR + turnAxis;
-        if(turningForce > 1.0){
-            turningForce = 1.0;
-        }
+        this.turningForce = turnAxis;
         return turningForce;
     }
 

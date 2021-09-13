@@ -13,7 +13,7 @@ public class InputModule implements RobotModule {
      * with the exception of the getState method below. update will be called once per module by teleop Periodic
      */
     public InputModule(){
-        joystickModule = new JoystickModule();
+        joystickModule = new ControlGame();
         driveTrainSensorModule = new DriveTrainSensorModule();
     
     }

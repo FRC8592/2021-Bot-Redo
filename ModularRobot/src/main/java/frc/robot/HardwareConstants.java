@@ -35,6 +35,8 @@ public class  HardwareConstants implements RobotModule{
     public static final int TURN_AXIS_G = 4;
     public static final int LEFT_TRIGGER_PULL = 2;
     public static final int RIGHT_TRIGGER_PULL = 3;
+    //aditional axis to make more simmilar to racing games -Zolton
+    public static final int TURN_AXIS_GM = 0;
     //more might get added here later -Zolton
     }
     //Drive Train
