@@ -44,8 +44,8 @@ public class ControlGame extends JoystickModule {
         this.turnAxis=driveStick.getRawAxis(HardwareConstants.JOYSTICK.TURN_AXIS_GM);
         this.triggerL=driveStick.getRawAxis(HardwareConstants.JOYSTICK.LEFT_TRIGGER_PULL);
         this.triggerR=driveStick.getRawAxis(HardwareConstants.JOYSTICK.RIGHT_TRIGGER_PULL);
-        this.forwardAxis = getdriveForce() / 0.70; //added a power mulltiplier
-        this.turnAxis = getTurningForce() *0.70;
+        this.forwardAxis = getdriveForce() * 1; //added a power mulltiplier
+        this.turnAxis = getTurningForce() * 0.40;
         // I cant find where this is being written to the robot or called by any class in general -Zolton
     }
 
