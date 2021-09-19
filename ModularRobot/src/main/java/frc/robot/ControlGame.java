@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.Math;
 
 
 public class ControlGame extends JoystickModule {
@@ -45,17 +46,18 @@ public class ControlGame extends JoystickModule {
         this.triggerL=driveStick.getRawAxis(HardwareConstants.JOYSTICK.LEFT_TRIGGER_PULL);
         this.triggerR=driveStick.getRawAxis(HardwareConstants.JOYSTICK.RIGHT_TRIGGER_PULL);
         this.forwardAxis = getdriveForce() * 1; //added a power mulltiplier
-        this.turnAxis = getTurningForce() * 0.40;
+        this.turnAxis = getTurningForce();
         // I cant find where this is being written to the robot or called by any class in general -Zolton
     }
 
     public double getdriveForce(){
-        this.driveForce = (-1.0*triggerR) + triggerL;
+        this.driveForce = (-1.0*Math.pow(triggerR, 2.0)) + Math.pow(triggerL, 2.0);
         return driveForce;
     }
 
     public double getTurningForce() {
-        this.turningForce = turnAxis;
+        this.turningForce = turnAxis * 0.5;
+        
         return turningForce;
     }
 
@@ -71,6 +73,7 @@ public class ControlGame extends JoystickModule {
         joystickMap.put("Joystick TurnAxis", this.turnAxis);
         joystickMap.put("Joystick LeftTriggerPull", this.triggerL);
         joystickMap.put("Joystick RightTriggerPull", this.triggerR);
+        joystickMap.put("JoyStick Drive Force", this.driveForce);
       return joystickMap;
  }
 

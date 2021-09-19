@@ -21,13 +21,6 @@ public class BasicTeleop extends ControlModule{
         outputs.driveTrainModule.setForwardOut(forward);
         outputs.driveTrainModule.setTurningOut(turn);
 
-        if(forward > -0.5 && forward < 0.5){
-            forward = 0;
-        }
-
-        if(turn > -0.5 && turn < 0.5 ){
-            turn = 0;
-        }
     }
 
     @Override
