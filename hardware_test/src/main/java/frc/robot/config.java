@@ -7,6 +7,7 @@ public final class config {
     public static final double BALL_TRIGGER_POWER  = 0.4;   // Fixed power value for turret feed wheel
     public static final double BALL_PROCESS_POWER  = 1.0;   // Fixed power value for turret feed belt
     public static final double TURRET_SCALE        = 0.5;   // Scale joystick input for turret motion
+    public static final double MAX_RPM_DEVIATION   = 100;
 
     // Parameters for constant-speed flywheel control
     public static final double BALL_FLYWHEEL_RPM   = 1000;

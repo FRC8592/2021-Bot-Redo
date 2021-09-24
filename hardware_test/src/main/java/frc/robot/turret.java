@@ -6,6 +6,8 @@ package frc.robot;
 // Smart Dashboard classes
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import javax.lang.model.util.ElementScanner6;
+
 // Motor control classes
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
@@ -13,6 +15,8 @@ import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj.Encoder;
+
+import java.lang.Math;
 
 
 public class turret {
@@ -73,6 +77,7 @@ public class turret {
         double flywheelSpeedLast = 0;
         double realFlywheelSpeed = 0.0;
         double turretRotation    = 0.0;
+        boolean enableShooter    = false;
 
         //
         // Control the launch flywheel via smartDashboard
@@ -90,17 +95,24 @@ public class turret {
         realFlywheelSpeed = turretLaunch.getSelectedSensorVelocity();
         SmartDashboard.putNumber("Real Speed", realFlywheelSpeed);
 
-    
+        // Disable the ball feed mechanism if the flywheel speed is incorrect
+        if (Math.abs(realFlywheelSpeed - flywheelSpeedSet) <= config.MAX_RPM_DEVIATION) {
+            enableShooter = true;
+        }
+        else {
+            enableShooter = false;
+        }
+        
         // Engage the ball feed mechanism.  Unjam always has priority
-        if (myControllers.getButton(robotControls.turretUnjamButton)) {             // If unjam pressed, reverse trigger and process motors
+        if (myControllers.getButton(robotControls.turretUnjamButton)) {                        // If unjam pressed, reverse trigger and process motors
             ballProcess.set(ControlMode.PercentOutput, -config.BALL_PROCESS_POWER);
             ballTrigger.set(ControlMode.PercentOutput, -config.BALL_TRIGGER_POWER);
-        } else if (myControllers.getButton(robotControls.launchButton)) {           // elsif launch button pressed, drive both motors forward
+        } else if (myControllers.getButton(robotControls.launchButton) & enableShooter) {  // elsif launch button pressed, drive both motors forward
             ballProcess.set(ControlMode.PercentOutput, config.BALL_PROCESS_POWER);
             ballTrigger.set(ControlMode.PercentOutput, config.BALL_TRIGGER_POWER);
         }
         else {
-            ballProcess.set(ControlMode.PercentOutput, 0);                          // else stop both motors
+            ballProcess.set(ControlMode.PercentOutput, 0);                                   // else stop both motors
             ballTrigger.set(ControlMode.PercentOutput, 0);    
         }
 
