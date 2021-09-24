@@ -15,7 +15,7 @@ public class ControlGame extends JoystickModule {
     // joystick axis 4 is our left right stick
     // the left and right triggers are axis's 2 and 3 respectively (goes from 0 to 1
     // as you press it down)
-    // module writen by Zolton (probably)
+    // module writen by Zolton
 
     /*
      * todo list: make forward back work with the joystick make left right work with

@@ -43,13 +43,13 @@ public class DrivetrainModule implements RobotModule{
         this.robotDrive = new DifferentialDrive(rightDrive, leftDrive);
     }
     public void updatePowerRightMotors(){
-        rightFront.set(ControlMode.PercentOutput, rightPower);
-        rightBack.set(ControlMode.PercentOutput, rightPower);
+        rightFront.set(ControlMode.Velocity, rightPower);
+        rightBack.set(ControlMode.Velocity, rightPower);
     }
 
     public void updatePowerLeftMotors(){
-        leftFront.set(ControlMode.PercentOutput, leftPower);
-        leftBack.set(ControlMode.PercentOutput, leftPower);
+        leftFront.set(ControlMode.Velocity, leftPower);
+        leftBack.set(ControlMode.Velocity, leftPower);
     }
 
     public void setRightMotorPower(double motorPower){
