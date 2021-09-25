@@ -52,8 +52,10 @@ public class turret {
         ballTrigger.set(ControlMode.PercentOutput, 0);
 
         // Additional configuration for the constant-speed flywheel motor 
-        turretLaunch.configFactoryDefault();    // Start with a known baseline
-        turretLaunch.setInverted(true);         // As installed, motor runs backward to shoot
+        turretLaunch.configFactoryDefault();            // Start with a known baseline
+        //turretLaunch.enableVoltageCompensation(true);   // Turn on voltage compensation
+        //turretLaunch.configVoltageCompSaturation(config.MAX_FLYWHEEL_VOLTS);
+        turretLaunch.setInverted(true);                 // As installed, motor runs backward to shoot
         turretLaunch.setSensorPhase(true);
         turretLaunch.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, config.FLYWHEEL_PID_INDEX, 0);
         turretLaunch.config_kP(config.SHOOT_SLOT_INDEX, config.SHOOT_PID_P);    // PID and FF constants
@@ -92,7 +94,7 @@ public class turret {
         }
 
         // Read actual speed from the flywheel and display it
-        realFlywheelSpeed = turretLaunch.getSelectedSensorVelocity();
+        realFlywheelSpeed = falconUtil.falconToRpm(turretLaunch.getSelectedSensorVelocity());
         SmartDashboard.putNumber("Real Speed", realFlywheelSpeed);
 
         // Disable the ball feed mechanism if the flywheel speed is incorrect

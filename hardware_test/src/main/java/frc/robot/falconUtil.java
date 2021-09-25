@@ -14,4 +14,9 @@ public final class falconUtil {
         return rpm * FALCON_COUNTS_PER_REV / FALCON_CONVERSION_FACTOR;
     }
 
+    // Convert the internal velocity for the Falcon 500 into RPM
+    public static double falconToRpm(double falconSpeed) {
+        return falconSpeed * FALCON_CONVERSION_FACTOR / FALCON_COUNTS_PER_REV;
+    }
+
 }
