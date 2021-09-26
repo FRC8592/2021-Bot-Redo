@@ -30,9 +30,11 @@ public class DrivetrainModule implements RobotModule{
     public void setForwardOut(double forwardOut){
         this.forwardOut = forwardOut;
     }
+    
     public void setTurningOut(double turningOut){
         this.turningOut = turningOut;
     }
+
     public DrivetrainModule(){
         this.leftFront = new WPI_TalonFX(HardwareConstants.CAN.LEFT_FRONT_WHEEL);
         this.leftBack = new WPI_TalonFX(HardwareConstants.CAN.LEFT_BACK_WHEEL);
@@ -42,6 +44,7 @@ public class DrivetrainModule implements RobotModule{
         this.rightDrive = new SpeedControllerGroup(rightFront, rightBack);
         this.robotDrive = new DifferentialDrive(rightDrive, leftDrive);
     }
+
     public void updatePowerRightMotors(){
         rightFront.set(ControlMode.PercentOutput, rightPower);
         rightBack.set(ControlMode.PercentOutput, rightPower);

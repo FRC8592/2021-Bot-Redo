@@ -23,6 +23,6 @@ public final class config {
     public static final double RAMP_TIME    = 0.5;      // Seconds
     public static final double FORWARD_EXPO = 2;
     public static final double TURN_EXPO    = 2;
-    public static final double TURN_POWER   = 0.4;
-    public static final double DRIVE_POWER  = 0.3;       
+    public static final double TURN_POWER   = 0.6;
+    public static final double DRIVE_POWER  = 1;       
 }

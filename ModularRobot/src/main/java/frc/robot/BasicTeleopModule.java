@@ -3,11 +3,11 @@ package frc.robot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicTeleop extends ControlModule{
+public class BasicTeleopModule extends ControlModule{
     private InputModule inputs;
     private OutputModule outputs;
 
-    public BasicTeleop(InputModule inputs, OutputModule outputs){
+    public BasicTeleopModule(InputModule inputs, OutputModule outputs){
         super(inputs, outputs);
         this.inputs = inputs;
         this.outputs = outputs;

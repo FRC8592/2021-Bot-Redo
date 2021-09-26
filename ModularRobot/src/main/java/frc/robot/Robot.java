@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   private InputModule inputModule;
   private ModuleRunner runner;
   private OutputModule outputModule;
-  private BasicTeleop teleopModule;
+  private BasicTeleopModule teleopModule;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
     this.runner = new ModuleRunner();
     this.outputModule = new OutputModule();
    
-    this.teleopModule = new BasicTeleop(inputModule, outputModule);
+    this.teleopModule = new BasicTeleopModule(inputModule, outputModule);
     this.runner.addModule(inputModule);
     this.runner.addModule(teleopModule);
     this.runner.addModule(outputModule);

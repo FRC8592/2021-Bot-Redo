@@ -28,7 +28,7 @@ public class JoystickModule implements RobotModule{
     public JoystickModule(){
         this.driveStick = new Joystick(HardwareConstants.JOYSTICK.DRIVE_STICK);
         this.turretStick = new Joystick(HardwareConstants.JOYSTICK.TURRET_STICK);
-       
+       //This module sets up 
     }
 
      public void updateBasicMovement(){
