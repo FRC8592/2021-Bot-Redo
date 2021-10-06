@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 // Motor control classes
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class collector {
     // Joystick controllers
@@ -21,7 +21,7 @@ public class collector {
     private DoubleSolenoid collectorSolenoid;
 
     // Intake spin motor
-    private TalonSRX intakeSpin;
+    private WPI_TalonSRX intakeSpin;
 
     // Collector position
     private boolean collectorInboard = true;
@@ -33,19 +33,22 @@ public class collector {
     public collector(robotControls myControllers) {
         this.myControllers = myControllers;
 
-        // Start Pneumatics
+        // Create pneumatic controller objects
         robotCompressor    = new Compressor(config_hw.compressorCAN);
-        collectorSolenoid  = new DoubleSolenoid(config_hw.compressorCAN,
-                                                config_hw.intakeSolPortA, config_hw.intakeSolPortB);
+        collectorSolenoid  = new DoubleSolenoid(config_hw.compressorCAN, config_hw.intakeSolPortA, config_hw.intakeSolPortB);
 
+        // ****************************************************************************
         // *** DANGER : Closed loop control must be enabled to prevent overpressure ***
-        robotCompressor.setClosedLoopControl(true);             // Cycle to control pressure
-        robotCompressor.start();                                // Start compressor running
-        collectorSolenoid.set(DoubleSolenoid.Value.kReverse);   // Move collector inboard
+        // ****************************************************************************
+        robotCompressor.setClosedLoopControl(true);             // Cycle to control pressure (important!)
+        // robotCompressor.start();                             // Start compressor running
+        robotCompressor.stop();                                 // TODO: Remove after testing
+        //collectorSolenoid.set(DoubleSolenoid.Value.kReverse);   // Move collector inboard
+        collectorSolenoid.set(DoubleSolenoid.Value.kForward);   // Move collector out.  TODO: Remove after testing
         collectorInboard = true;
 
         // Create motors
-        intakeSpin = new TalonSRX(config_hw.intakeSpinCAN);
+        intakeSpin = new WPI_TalonSRX(config_hw.intakeSpinCAN);
         intakeSpin.set(ControlMode.PercentOutput, 0);           // Ensure motor is stopped
     }
 

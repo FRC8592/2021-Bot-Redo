@@ -9,11 +9,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-// Basic infrastructure
-//import edu.wpi.first.wpilibj.PowerDistributionPanel;
-
-// Navx
-//import com.kauailabs.navx.frc.AHRS;
+// Robot instrumentation
+//import edu.wpi.first.wpilibj.PowerDistributionPanel;    // PDP
+//import com.kauailabs.navx.frc.AHRS;                     // NavX IMU
 
 
 /**
@@ -52,7 +50,7 @@ public class Robot extends TimedRobot {
     // Initialize robot controllers
     myControllers = new robotControls();
 
-    // Initialize collector and turret control
+    // Initialize collector, turret and drivetrain control
     robotCollector = new collector(myControllers);
     robotTurret    = new turret(myControllers);
     driveTrain     = new DriveTrainModule(myControllers);
@@ -106,7 +104,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    // Update collector and driver control
+    // Update collector, turret and driver controls
     robotCollector.collectorPeriodic();
     robotTurret.turretPeriodic();
     driveTrain.DriveTrainModulePeriodic();

@@ -37,6 +37,12 @@ public class DriveTrainModule {
   		leftBack  = new WPI_TalonFX(config_hw.leftBackCAN);
   		rightFront= new WPI_TalonFX(config_hw.rightFrontCAN);
 		rightBack = new WPI_TalonFX(config_hw.rightBackCAN);
+
+		// Configure motor ramp time to smooth out acceleration
+		leftFront.configOpenloopRamp(config.RAMP_TIME);
+		leftBack.configOpenloopRamp(config.RAMP_TIME);
+		rightFront.configOpenloopRamp(config.RAMP_TIME);
+	  	rightBack.configOpenloopRamp(config.RAMP_TIME);
 	
 		// Pair up motors into control groups
 		leftDrive  = new SpeedControllerGroup(leftFront, leftBack);
@@ -44,12 +50,6 @@ public class DriveTrainModule {
 		  
 		// Initialize drive system
   		robotDrive = new DifferentialDrive(rightDrive, leftDrive);
-
-		// Configure motor controllers
-	 	leftFront.configOpenloopRamp(config.RAMP_TIME);
-	  	leftBack.configOpenloopRamp(config.RAMP_TIME);
-	  	rightFront.configOpenloopRamp(config.RAMP_TIME);
-		rightBack.configOpenloopRamp(config.RAMP_TIME);
 	}
 
 	//
@@ -60,21 +60,8 @@ public class DriveTrainModule {
 		double forwardRev = myControllers.getAxis(robotControls.forwardRevAxis) * config.DRIVE_POWER;
 		double turn       = myControllers.getAxis(robotControls.turnAxis) * config.TURN_POWER;
 
-		// // Apply expo to controls.  Maintain negative values.
-		// if (forwardRev < 0.0) {
-		// 	forwardRev = -Math.pow(forwardRev, config.FORWARD_EXPO);
-		// } else {
-		// 	forwardRev = Math.pow(forwardRev, config.FORWARD_EXPO);
-		// }
-
-		// if (turn < 0.0) {
-		// 	turn = -Math.pow(turn, config.TURN_EXPO);
-		// } else {
-		// 	turn = Math.pow(turn, config.TURN_EXPO);
-		// }
-
 		// Send controls to the robot drive system
-		robotDrive.arcadeDrive(forwardRev, turn);
+		robotDrive.arcadeDrive(forwardRev, turn, true);		// The final boolean value determines if expo is enabled
 	}
 	
 }
