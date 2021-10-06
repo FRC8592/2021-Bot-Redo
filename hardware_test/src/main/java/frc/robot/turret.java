@@ -111,8 +111,9 @@ public class turret {
         flywheelSpeedSet = SmartDashboard.getNumber("Flywheel RPM", config.BALL_FLYWHEEL_RPM);
 
         if (flywheelSpeedSet != flywheelSpeedLast) {
-            // turretLaunch.set(ControlMode.Velocity, falconUtil.rpmToFalcon(flywheelSpeedSet));
-            turretLaunch.set(ControlMode.Velocity, falconUtil.rpmToFalcon(0));
+            if (myControllers.getButton(robotControls.turretSpinButton)) {
+                turretLaunch.set(ControlMode.Velocity, falconUtil.rpmToFalcon(flywheelSpeedSet));
+            }
             flywheelSpeedLast = flywheelSpeedSet;
         }
 

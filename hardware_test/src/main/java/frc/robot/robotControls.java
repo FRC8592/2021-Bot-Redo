@@ -39,6 +39,7 @@ public class robotControls {
     public static final int[] flywheelSpeedAxis   = {cTurret,3};   // Launch speed is adjustable
     public static final int[] launchButton        = {cTurret,1};
     public static final int[] turretUnjamButton   = {cTurret,2};
+    public static final int[] turretSpinButton    = {cTurret,3};
     public static final int[] turretTurnAxis      = {cTurret,2};
 
     // Array to hold joystick objects
