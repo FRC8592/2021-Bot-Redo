@@ -30,6 +30,14 @@ public class  HardwareConstants implements RobotModule{
     public static final int FLYWHEEL_SPEED_CONTROL = 3;
     public static final int TURRET_LAUNCH = 6;
     public static final int STAGE_2_COLLECTION = 5;
+    //values for game controller style input -Zolton
+    public static final int FORWARD_AXIS_G = 1;
+    public static final int TURN_AXIS_G = 4;
+    public static final int LEFT_TRIGGER_PULL = 2;
+    public static final int RIGHT_TRIGGER_PULL = 3;
+    //aditional axis to make more simmilar to racing games -Zolton
+    public static final int TURN_AXIS_GM = 0;
+    //more might get added here later -Zolton
     }
     //Drive Train
     public static final int LEFT_MOTOR_INTS = 0;
